@@ -1,0 +1,9 @@
+platform :ios, '9.0'
+use_frameworks!
+target 'RouterApp' do
+pod 'Alamofire', '3.5'
+pod 'ObjectMapper', '1.1'
+pod 'RealmSwift', '~> 2.0'
+pod 'Reachability'
+pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON', :branch => 'swift2'
+end

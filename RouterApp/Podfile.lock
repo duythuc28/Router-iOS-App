@@ -1,0 +1,39 @@
+PODS:
+  - Alamofire (3.5.0)
+  - ObjectMapper (1.1.0)
+  - Reachability (3.2)
+  - Realm (2.0.2):
+    - Realm/Headers (= 2.0.2)
+  - Realm/Headers (2.0.2)
+  - RealmSwift (2.0.2):
+    - Realm (= 2.0.2)
+  - SwiftyJSON (2.4.0)
+
+DEPENDENCIES:
+  - Alamofire (= 3.5)
+  - ObjectMapper (= 1.1)
+  - Reachability
+  - RealmSwift (~> 2.0)
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON`, branch `swift2`)
+
+EXTERNAL SOURCES:
+  SwiftyJSON:
+    :branch: swift2
+    :git: https://github.com/SwiftyJSON/SwiftyJSON
+
+CHECKOUT OPTIONS:
+  SwiftyJSON:
+    :commit: 54017d514a87b2b855b407131292c510cdeb65f8
+    :git: https://github.com/SwiftyJSON/SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: b70a7352335f8ea5babd0a923eb7e8eacc67b877
+  ObjectMapper: 365eac5aac06ae9298978fb2482b3d4c5ef4bb5d
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  Realm: 0f5a194af0b7e6158b83db41b4ee1a00be7ddf1a
+  RealmSwift: 0eb5070d851cba7c66e841ca756d83609dc78bc8
+  SwiftyJSON: 96918c1bf505efa50c4f72957018dd3452090c9c
+
+PODFILE CHECKSUM: 32513d57d12c18fed141f26af9268b98eca4f15d
+
+COCOAPODS: 1.0.1

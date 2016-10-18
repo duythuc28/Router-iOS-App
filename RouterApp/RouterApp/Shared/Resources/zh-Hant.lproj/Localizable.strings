@@ -1,0 +1,206 @@
+//Generated IOS file for locale : en
+
+"language"="en";
+
+//APPLICATION_GLOBAL
+"app_name"="Your app name in English";
+"app_version"="1.0";
+
+//COMMON
+"button_cancel"="Cancel";
+"button_next"="Next";
+"button_ok"="OK";
+"button_yes"="Yes";
+"button_no"="No";
+"text_done"="Done";
+"tab_homemade"="Homemade";
+"tab_lifeskill"="Skill";
+"tab_knowledge"="Knowledge";
+"tab_parent"="Parenting";
+"tab_store"="Exp Store";
+"label_psubject_indoor"="Indoor";
+"label_psubject_bedtime"="Bedtime";
+"label_psubject_bathtime"="Bath";
+"label_psubject_mealtime"="Mealtime";
+"label_psubject_outdoor"="Outdoor";
+"label_psubject_roadtrip"="Road Trip";
+"label_psubject_atrest"="Waiting";
+"label_psubject_busykid"="Busy Kid";
+"label_isubject_body"="Body";
+"text_isubject_body_introduce"="";
+"label_isubject_word"="Word";
+"text_isubject_word_introduce"="";
+"label_isubject_people"="People";
+"text_isubject_people_introduce"="";
+"label_isubject_logic"="Logic";
+"text_isubject_logic_introduce"="";
+"label_isubject_picture"="Picture";
+"text_isubject_picture_introduce"="";
+"label_isubject_music"="Music";
+"text_isubject_music_introduce"="";
+"label_isubject_nature"="Nature";
+"text_isubject_nature_introduce"="";
+"label_isubject_selfsmart"="Self_Smart";
+"text_isubject_selfsmart_introduce"="";
+"button_home"="Home";
+"button_edit"="Edit";
+"button_remove"="Remove";
+"text_search_all"="All";
+"text_search_result"="Search Results";
+"label_adminname"="Admin";
+"msg_logout_confirm"="You are logging out";
+"label_exciting"="Exciting";
+
+//LOGIN_SCREEN
+"label_signin_email"="Your email";
+"label_signin_password"="Your password";
+"button_signin"="SIGN IN ";
+"link_signin_forgotpass"="Forgot your password";
+"text_signin_signinwith"="Sign In with";
+"button_signin_signup"="SIGN UP";
+"button_signin_signuplater"="SIGN UP LATER";
+"title_signin_pleasesignin"="Please Sign in";
+"msg_alert_login_require_additem"="\nYou must Signin/Signup before add this Item to Cart.\n";
+"msg_alert_login_require_rateitem"="\nYou must Signin/Signup before rating this Item.\n";
+"msg_signin_wrongemail"="Wrong password or email";
+"msg_signin_noexistsocialacc"="Don't have social network account existed";
+
+//SIGNUP_SCREEN
+"title_signup"="SIGN UP";
+"text_signup_letstart"="LET'S GET STARTED!";
+"text_signup_takeminute"="It only takes a minute.";
+"label_signup_firstname"="First Name";
+"label_signup_lastname"="Last Name";
+"text_signup_email_instruction"="Email is used to login or reset your password";
+"text_signup_password_instruction"="Password must have at least 6 characters including letter and alphanumeric";
+"label_signup_confirmpass"="Confirm your password";
+"title_signup_verifyemail"="Verify your email";
+"text_signup_verifyemail_instruction"="We have sent you an email with passcode. Please type passcode below";
+"label_signup_passcode"="Passcode";
+"button_signup_passcode_resend"="Resend";
+"button_signup_confirm"="Confirm";
+"text_signup_welcome"="Welcome";
+"text_signup_addkid_instruction"="Please register your children's information. We offer better services that fit your children's age and gender";
+"label_signup_addkid_kidnumber"="Kid";
+"label_signup_addkid_birthday"="Birthday";
+"button_signup_addkid"="Add more kid";
+"checkbox_signup_policyagree_2"="Experfi Term of Use Policy";
+"checkbox_signup_policyagree"="I agree with Experfi Term of Use Policy";
+"button_signup_createaccount"="Create Account";
+"msg_signup_wrongpasscode"="Wrong passcode";
+"msg_signup_wrongpasscode3time"="Wrong passcode 3 times. Last passcode no longer valid. Resend";
+"msg_signup_passwordnotmatch"="Password format does not match";
+"msg_signup_nokid"="Please register at least one kid's account";
+
+//LEFT_MENU_SCREEN
+"label_leftmenu_aboutexperfi"="About Experfi team";
+"label_leftmenu_theory"="Experfi's theory";
+"label_leftmenu_activity"="Manage activities";
+"label_leftmenu_language"="Language";
+"label_leftmenu_termpolicy"="Term & Policy";
+"label_leftmenu_share"="Share this app";
+"label_leftmenu_feedback"="Send us feedback/report";
+"label_leftmenu_logout"="Log out";
+"label_leftmenu_removeads"="Remove ads";
+
+//HOME_PAGE_SCREEN
+"text_home_statisticboard"="is the number of times you want to interact with your child ";
+"text_home_statisticboard_week"="this week";
+"text_home_instruction"="";
+
+//ITEM_DETAILS_SCREEN
+"label_details_age"="Age";
+"text_details_age_newborn"="Newborn";
+"text_details_age_month"="Months";
+"text_details_age_year"="Year";
+"label_details_review"="Reviews";
+"label_details_collect"="Collected";
+"label_details_player"="Players";
+"label_details_tool"="Tools";
+"text_details_tools_notool"="No Tool";
+"text_details_tool_tool"="Tool";
+"text_details_license_free"="Free";
+"label_details_gender"="Gender";
+"text_details_gender_male"="Male";
+"text_details_gender_female"="Female";
+"text_details_gender_other"="Other";
+"label_details_howtoplay"="How To Play";
+
+//PARENTING_SCREEN
+"label_parenting_parent"="Parent";
+"label_parenting_mother"="Mother";
+"label_parenting_sinlgemom"="Single Mom";
+"label_parenting_father"="Father";
+"label_parenting_positive"="Positive";
+"label_parenting_problem"="Problem";
+
+//FILTER_SCREEN
+"text_filter_wheretoplay"="Where to play";
+"text_filter_license"="License";
+"text_filter_intelligence"="Intelligence";
+"text_filter_keyword"="Keyword";
+"button_filter_reset"="Reset";
+
+//STORE_SCREEN
+"msg_store_purchaseconfirm"="Do you want to buy this content";
+"text_store_addtokid"="Add to";
+"button_store_buy"="Buy";
+"title_store_checkout"="Checkout";
+"text_store_checkout_cardnumber"="Card Number";
+"text_store_checkout_expiredate"="Expiration Date";
+"text_store_checkout_CVV"="CVV";
+"text_store_checkout_cardname"="Card Holder Name";
+"text_store_checkout_totalamount"="Total Amount";
+"msg_store_checkout_success"="Your payment has been successful";
+"msg_store_checkout_failed"="Your payment has been failed. Please contact your card's place of issue for further information";
+
+//SHARE_SCREEN
+"text_share_shareto"="Share to";
+"text_share_or"="Or";
+
+//FEEDBACK_SCREEN
+"text_feedback_rate"="Please rate";
+"text_feedback_comment"="Your comment";
+"text_feedback_email"="Your email";
+"msg_feedback_thankyou"="Thank you for your feedback";
+"button_feedback_home"="Back to Home";
+
+//LANGUAGES_SCREEN
+"text_language_select"="Please select language";
+"title_language"="Language";
+"text_language_english"="English";
+"text_language_chinese"="Chinese";
+"text_language_japenese"="Japanese";
+"text_language_german"="German";
+"text_language_vietnamese"="Vietnamese";
+"text_language_korean"="Korean";
+"text_language_espanol"="Espanol";
+
+//REMOVE_ADS
+"msg_removeadd_confirm1"="Upgrade to advertising free";
+"msg_removeadd_confirm2"="Pay 3.99$ for no advertising version";
+
+//RATING_SCREEN
+"title_rating"="Rating";
+"text_rating_instruction"="Does this item help parent detect their child's nature intelligences and help child improve one or more intelligences";
+"text_rating_review"="Please summarize review here";
+"text_rating_thankyou"="Thank you for your rating";
+
+//TERM_SCREEN
+"title_policy"="Experfi's Term of Use Policy";
+"text_policy"="";
+
+//ACCOUNT_SCREEN
+"tab_account_kids"="Kids";
+"tab_account_info"="Information";
+
+//MANAGER_ACTIVITIES_SCREEN
+"msg_cannot_change_position"="\nSorry, we can't change position between 2 items. Please try again later.\n";
+"msg_remove_item_success"="Remove item Successfully.";
+
+//CONTEXT_MENU_SCREEN
+"label_openitem"="Open";
+"label_shareitem"="Share";
+"label_not_interested"="Not Interested";
+"label_manage_all_items"="Manage All Items";
+"label_additem"="Add item to";
