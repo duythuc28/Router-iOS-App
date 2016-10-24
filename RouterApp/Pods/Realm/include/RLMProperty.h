@@ -90,7 +90,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Methods
 
 /**
- Returns whether a given property object is equal to the receiver.
+ Returns a Boolean value that indicates whether a given property object is equal to the receiver.
  */
 - (BOOL)isEqualToProperty:(RLMProperty *)property;
 

@@ -35,7 +35,7 @@ using namespace realm;
 
 const NSUInteger RLMDescriptionMaxDepth = 5;
 
-static bool maybeInitObjectSchemaForUnmanaged(RLMObjectBase *obj) {
+static bool RLMInitializedObjectSchema(RLMObjectBase *obj) {
     obj->_objectSchema = [obj.class sharedSchema];
     if (!obj->_objectSchema) {
         return false;
@@ -57,8 +57,9 @@ static bool maybeInitObjectSchemaForUnmanaged(RLMObjectBase *obj) {
 @implementation RLMObjectBase
 // unmanaged init
 - (instancetype)init {
-    if ((self = [super init])) {
-        maybeInitObjectSchemaForUnmanaged(self);
+    self = [super init];
+    if (self) {
+        RLMInitializedObjectSchema(self);
     }
     return self;
 }
@@ -71,7 +72,7 @@ static bool maybeInitObjectSchemaForUnmanaged(RLMObjectBase *obj) {
     _observationInfo = nullptr;
 }
 
-static id validatedObjectForProperty(id obj, RLMProperty *prop, RLMSchema *schema) {
+static id RLMValidatedObjectForProperty(id obj, RLMProperty *prop, RLMSchema *schema) {
     if (RLMIsObjectValidForProperty(obj, prop)) {
         return obj;
     }
@@ -101,7 +102,7 @@ static id validatedObjectForProperty(id obj, RLMProperty *prop, RLMSchema *schem
         return self;
     }
 
-    if (!maybeInitObjectSchemaForUnmanaged(self)) {
+    if (!RLMInitializedObjectSchema(self)) {
         // Don't populate fields from the passed-in object if we're called
         // during schema init
         return self;
@@ -113,11 +114,11 @@ static id validatedObjectForProperty(id obj, RLMProperty *prop, RLMSchema *schem
             @throw RLMException(@"Invalid array input. Number of array elements does not match number of properties.");
         }
         for (NSUInteger i = 0; i < array.count; i++) {
-            id propertyValue = validatedObjectForProperty(array[i], properties[i], schema);
+            id propertyValue = RLMValidatedObjectForProperty(array[i], properties[i], schema);
             [self setValue:RLMCoerceToNil(propertyValue) forKeyPath:[properties[i] name]];
         }
     }
-    else if (value) {
+    else {
         // assume our object is an NSDictionary or an object with kvc properties
         NSDictionary *defaultValues = nil;
         for (RLMProperty *prop in properties) {
@@ -131,29 +132,16 @@ static id validatedObjectForProperty(id obj, RLMProperty *prop, RLMSchema *schem
                 obj = defaultValues[prop.name];
             }
 
-            // don't set unspecified properties
-            if (!obj) {
-                continue;
-            }
-
-            obj = validatedObjectForProperty(obj, prop, schema);
+            obj = RLMValidatedObjectForProperty(obj, prop, schema);
             [self setValue:RLMCoerceToNil(obj) forKeyPath:prop.name];
         }
-    } else {
-        @throw RLMException(@"Must provide a non-nil value.");
     }
 
     return self;
 }
 
-id RLMCreateManagedAccessor(Class cls, __unsafe_unretained RLMRealm *realm, RLMClassInfo *info) {
-    RLMObjectBase *obj = [[cls alloc] initWithRealm:realm schema:info->rlmObjectSchema];
-    obj->_info = info;
-    return obj;
-}
-
 - (instancetype)initWithRealm:(__unsafe_unretained RLMRealm *const)realm
-                       schema:(RLMObjectSchema *)schema {
+                       schema:(__unsafe_unretained RLMObjectSchema *const)schema {
     self = [super init];
     if (self) {
         _realm = realm;
@@ -308,7 +296,7 @@ id RLMCreateManagedAccessor(Class cls, __unsafe_unretained RLMRealm *realm, RLMC
     if (!_observationInfo) {
         _observationInfo = new RLMObservationInfo(self);
     }
-    _observationInfo->recordObserver(_row, _info, _objectSchema, keyPath);
+    _observationInfo->recordObserver(_row, _objectSchema, keyPath);
 
     [super addObserver:observer forKeyPath:keyPath options:options context:context];
 }
@@ -347,7 +335,7 @@ id RLMObjectBaseObjectForKeyedSubscript(RLMObjectBase *object, NSString *key) {
     }
 
     if (object->_realm) {
-        return RLMDynamicGetByName(object, key, false);
+        return RLMDynamicGet(object, RLMValidatedGetProperty(object, key));
     }
     else {
         return [object valueForKey:key];
@@ -437,6 +425,15 @@ Class RLMObjectUtilClass(BOOL isSwift) {
 
 + (NSDictionary *)getLinkingObjectsProperties:(__unused id)obj {
     return nil;
+}
+
++ (void)initializeListProperty:(__unused RLMObjectBase *)object property:(__unused RLMProperty *)property array:(__unused RLMArray *)array {
+}
+
++ (void)initializeOptionalProperty:(__unused RLMObjectBase *)object property:(__unused RLMProperty *)property {
+}
+
++ (void)initializeLinkingObjectsProperty:(__unused RLMObjectBase *)object property:(__unused RLMProperty *)property {
 }
 
 + (NSDictionary *)getOptionalProperties:(__unused id)obj {

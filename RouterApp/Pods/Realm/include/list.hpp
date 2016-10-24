@@ -31,12 +31,11 @@
 namespace realm {
 using RowExpr = BasicRowExpr<Table>;
 
-class AnyThreadConfined;
 class ObjectSchema;
 class Query;
 class Realm;
 class Results;
-class SortDescriptor;
+struct SortOrder;
 
 class List {
 public:
@@ -51,7 +50,6 @@ public:
 
     const std::shared_ptr<Realm>& get_realm() const { return m_realm; }
     Query get_query() const;
-    const ObjectSchema& get_object_schema() const;
     size_t get_origin_row_index() const;
 
     bool is_valid() const;
@@ -73,11 +71,8 @@ public:
 
     void delete_all();
 
-    Results sort(SortDescriptor order);
+    Results sort(SortOrder order);
     Results filter(Query q);
-
-    // Return a Results representing a snapshot of this List.
-    Results snapshot() const;
 
     bool operator==(List const& rgt) const noexcept;
 
@@ -96,8 +91,8 @@ public:
     // The List object has been invalidated (due to the Realm being invalidated,
     // or the containing object being deleted)
     // All non-noexcept functions can throw this
-    struct InvalidatedException : public std::logic_error {
-        InvalidatedException() : std::logic_error("Access to invalidated List object") {}
+    struct InvalidatedException : public std::runtime_error {
+        InvalidatedException() : std::runtime_error("Access to invalidated List object") {}
     };
 
     // The input index parameter was out of bounds
@@ -108,10 +103,7 @@ public:
     };
 
 private:
-    friend AnyThreadConfined;
-
     std::shared_ptr<Realm> m_realm;
-    mutable const ObjectSchema* m_object_schema = nullptr;
     LinkViewRef m_link_view;
     _impl::CollectionNotifier::Handle<_impl::CollectionNotifier> m_notifier;
 

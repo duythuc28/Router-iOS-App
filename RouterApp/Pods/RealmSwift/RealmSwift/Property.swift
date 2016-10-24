@@ -22,36 +22,35 @@ import Realm
 #if swift(>=3.0)
 
 /**
- `Property` instances represent properties managed by a Realm in the context of an object schema. Such properties may be
- persisted to a Realm file or computed from other data in the Realm.
+This class represents properties persisted to Realm in an `ObjectSchema`.
 
- When using Realm, property instances allow performing migrations and introspecting the database's schema.
+When using Realm, `Property` objects allow performing migrations and
+introspecting the database's schema.
 
- Property instances map to columns in the core database.
- */
+These properties map to columns in the core database.
+*/
 public final class Property: CustomStringConvertible {
 
     // MARK: Properties
 
     internal let rlmProperty: RLMProperty
 
-    /// The name of the property.
+    /// Property name.
     public var name: String { return rlmProperty.name }
 
-    /// The type of the property.
+    /// Property type.
     public var type: PropertyType { return rlmProperty.type }
 
-    /// Indicates whether this property is indexed.
+    /// Whether this property is indexed.
     public var isIndexed: Bool { return rlmProperty.indexed }
 
-    /// Indicates whether this property is optional. (Note that certain numeric types must be wrapped in a
-    /// `RealmOptional` instance in order to be declared as optional.)
+    /// Whether this property is optional (can contain `nil` values).
     public var isOptional: Bool { return rlmProperty.optional }
 
-    /// For `Object` and `List` properties, the name of the class of object stored in the property.
+    /// Object class name - specify object types for `Object` and `List` properties.
     public var objectClassName: String? { return rlmProperty.objectClassName }
 
-    /// A human-readable description of the property object.
+    /// Returns a human-readable description of this property.
     public var description: String { return rlmProperty.description }
 
     // MARK: Initializers
@@ -73,22 +72,22 @@ public func == (lhs: Property, rhs: Property) -> Bool { // swiftlint:disable:thi
 // MARK: Unavailable
 
 extension Property {
-    @available(*, unavailable, renamed: "isIndexed")
-    public var indexed: Bool { fatalError() }
+    @available(*, unavailable, renamed:"isIndexed")
+    public var indexed : Bool { fatalError() }
 
-    @available(*, unavailable, renamed: "isOptional")
-    public var optional: Bool { fatalError() }
+    @available(*, unavailable, renamed:"isOptional")
+    public var optional : Bool { fatalError() }
 }
 
 #else
 
 /**
  `Property` instances represent properties managed by a Realm in the context of an object schema. Such properties may be
- persisted to a Realm file or computed from other data in the Realm.
+ persisted to a Realm file or computed from other data from the Realm.
 
- When using Realm, property instances allow performing migrations and introspecting the database's schema.
+ When using Realm, `Property` instances allow performing migrations and introspecting the database's schema.
 
- Property instances map to columns in the core database.
+ These property instances map to columns in the core database.
 */
 public final class Property: CustomStringConvertible {
 

@@ -65,10 +65,10 @@ NS_ASSUME_NONNULL_BEGIN
 
  @see               `RLMObjectSchema`
  */
-- (RLMObjectSchema *)objectForKeyedSubscript:(NSString *)className;
+- (RLMObjectSchema *)objectForKeyedSubscript:(id <NSCopying>)className;
 
 /**
- Returns whether two `RLMSchema` instances are equivalent.
+ Returns a Boolean value that indicates whether two `RLMSchema` instances are equivalent.
  */
 - (BOOL)isEqualToSchema:(RLMSchema *)schema;
 

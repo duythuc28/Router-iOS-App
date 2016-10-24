@@ -20,8 +20,6 @@
 
 @class RLMObjectSchema, RLMRealm;
 
-NS_ASSUME_NONNULL_BEGIN
-
 /**
  Returns the Realm that manages the object, if one exists.
  
@@ -33,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return The Realm which manages this object. Returns `nil `for unmanaged objects.
  */
-FOUNDATION_EXTERN RLMRealm * _Nullable RLMObjectBaseRealm(RLMObjectBase * _Nullable object);
+FOUNDATION_EXTERN RLMRealm *RLMObjectBaseRealm(RLMObjectBase *object);
 
 /**
  Returns an `RLMObjectSchema` which describes the managed properties of the object.
@@ -46,7 +44,7 @@ FOUNDATION_EXTERN RLMRealm * _Nullable RLMObjectBaseRealm(RLMObjectBase * _Nulla
  
  @return The object schema which lists the managed properties for the object.
  */
-FOUNDATION_EXTERN RLMObjectSchema * _Nullable RLMObjectBaseObjectSchema(RLMObjectBase * _Nullable object);
+FOUNDATION_EXTERN RLMObjectSchema *RLMObjectBaseObjectSchema(RLMObjectBase *object);
 
 /**
  Returns the object corresponding to a key value.
@@ -62,7 +60,7 @@ FOUNDATION_EXTERN RLMObjectSchema * _Nullable RLMObjectBaseObjectSchema(RLMObjec
  
  @return The object for the property requested.
  */
-FOUNDATION_EXTERN id _Nullable RLMObjectBaseObjectForKeyedSubscript(RLMObjectBase * _Nullable object, NSString *key);
+FOUNDATION_EXTERN id RLMObjectBaseObjectForKeyedSubscript(RLMObjectBase *object, NSString *key);
 
 /**
  Sets a value for a key on the object.
@@ -77,6 +75,5 @@ FOUNDATION_EXTERN id _Nullable RLMObjectBaseObjectForKeyedSubscript(RLMObjectBas
  @param key		The name of the property.
  @param obj		The object to set as the value of the key.
  */
-FOUNDATION_EXTERN void RLMObjectBaseSetObjectForKeyedSubscript(RLMObjectBase * _Nullable object, NSString *key, id _Nullable obj);
+FOUNDATION_EXTERN void RLMObjectBaseSetObjectForKeyedSubscript(RLMObjectBase *object, NSString *key, id obj);
 
-NS_ASSUME_NONNULL_END

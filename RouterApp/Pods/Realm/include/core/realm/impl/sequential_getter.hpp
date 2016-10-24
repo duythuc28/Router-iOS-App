@@ -1,18 +1,20 @@
 /*************************************************************************
  *
- * Copyright 2016 Realm Inc.
+ * REALM CONFIDENTIAL
+ * __________________
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  [2011] - [2015] Realm Inc
+ *  All Rights Reserved.
  *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Realm Incorporated and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Realm Incorporated
+ * and its suppliers and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Realm Incorporated.
  *
  **************************************************************************/
 
@@ -23,20 +25,16 @@ namespace realm {
 
 class SequentialGetterBase {
 public:
-    virtual ~SequentialGetterBase() noexcept
-    {
-    }
+    virtual ~SequentialGetterBase() noexcept {}
 };
 
-template <class ColType>
+template<class ColType>
 class SequentialGetter : public SequentialGetterBase {
 public:
     using T = typename ColType::value_type;
     using ArrayType = typename ColType::LeafType;
 
-    SequentialGetter()
-    {
-    }
+    SequentialGetter() {}
 
     SequentialGetter(const Table& table, size_t column_ndx)
     {
@@ -50,14 +48,12 @@ public:
         init(column);
     }
 
-    ~SequentialGetter() noexcept override
-    {
-    }
+    ~SequentialGetter() noexcept override {}
 
     void init(const ColType* column)
     {
         m_array_ptr.reset(); // Explicitly destroy the old one first, because we're reusing the memory.
-        m_array_ptr.reset(new (&m_leaf_accessor_storage) ArrayType(column->get_alloc()));
+        m_array_ptr.reset(new(&m_leaf_accessor_storage) ArrayType(column->get_alloc()));
         m_column = column;
         m_leaf_end = 0;
     }
@@ -66,7 +62,7 @@ public:
     {
         // Return whether or not leaf array has changed (could be useful to know for caller)
         if (index >= m_leaf_end || index < m_leaf_start) {
-            typename ColType::LeafInfo leaf{&m_leaf_ptr, m_array_ptr.get()};
+            typename ColType::LeafInfo leaf { &m_leaf_ptr, m_array_ptr.get() };
             size_t ndx_in_leaf;
             m_column->get_leaf(index, ndx_in_leaf, leaf);
             m_leaf_start = index - ndx_in_leaf;
@@ -82,7 +78,7 @@ public:
     {
 #ifdef _MSC_VER
 #pragma warning(push)
-#pragma warning(disable : 4800) // Disable the Microsoft warning about bool performance issue.
+#pragma warning(disable:4800)   // Disable the Microsoft warning about bool performance issue.
 #endif
 
         cache_next(index);
@@ -104,10 +100,9 @@ public:
 
     size_t m_leaf_start;
     size_t m_leaf_end;
-    const ColType* m_column = nullptr;
+    const ColType* m_column;
 
     const ArrayType* m_leaf_ptr = nullptr;
-
 private:
     // Leaf cache for when the root of the column is not a leaf.
     // This dog and pony show is because Array has a reference to Allocator internally,
