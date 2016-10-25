@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A0E58AB1DBF86D10080ADF5 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58AA1DBF86D10080ADF5 /* HomeTableViewCell.swift */; };
+		5A0E58AD1DBFA01C0080ADF5 /* HowToConfigureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58AC1DBFA01C0080ADF5 /* HowToConfigureViewController.swift */; };
+		5A0E58AF1DBFA60F0080ADF5 /* CPXDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58AE1DBFA60F0080ADF5 /* CPXDetailViewController.swift */; };
+		5A0E58B11DBFB12F0080ADF5 /* CPXDetailLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58B01DBFB12F0080ADF5 /* CPXDetailLocationViewController.swift */; };
+		5A0E58B31DBFBEF50080ADF5 /* CPXDetailAddNewLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58B21DBFBEF50080ADF5 /* CPXDetailAddNewLocationViewController.swift */; };
+		5A0E58B51DBFC5660080ADF5 /* CPXDetailListClientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58B41DBFC5660080ADF5 /* CPXDetailListClientsViewController.swift */; };
+		5A0E58B71DBFC70A0080ADF5 /* CPXDetailListClientsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58B61DBFC70A0080ADF5 /* CPXDetailListClientsTableViewCell.swift */; };
+		5A0E58B91DBFCC830080ADF5 /* CPXDetailAdvancedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58B81DBFCC830080ADF5 /* CPXDetailAdvancedViewController.swift */; };
+		5A0E58BB1DBFD6330080ADF5 /* CPXDetailConfigurateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58BA1DBFD6330080ADF5 /* CPXDetailConfigurateViewController.swift */; };
+		5A0E58BD1DBFD6480080ADF5 /* CPXDetailOptimizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58BC1DBFD6480080ADF5 /* CPXDetailOptimizeViewController.swift */; };
 		5AA929201DBE69A100935BF4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA9291F1DBE69A100935BF4 /* HomeViewController.swift */; };
 		5AA9292D1DBE6A7A00935BF4 /* ScanLAN.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA9292C1DBE6A7A00935BF4 /* ScanLAN.m */; };
 		5AA929301DBE6A8600935BF4 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA9292F1DBE6A8600935BF4 /* Utils.m */; };
@@ -67,6 +77,16 @@
 
 /* Begin PBXFileReference section */
 		341B9307B8DA183C5B89FA3C /* Pods-RouterApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RouterApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RouterApp/Pods-RouterApp.debug.xcconfig"; sourceTree = "<group>"; };
+		5A0E58AA1DBF86D10080ADF5 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		5A0E58AC1DBFA01C0080ADF5 /* HowToConfigureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowToConfigureViewController.swift; sourceTree = "<group>"; };
+		5A0E58AE1DBFA60F0080ADF5 /* CPXDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPXDetailViewController.swift; sourceTree = "<group>"; };
+		5A0E58B01DBFB12F0080ADF5 /* CPXDetailLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPXDetailLocationViewController.swift; sourceTree = "<group>"; };
+		5A0E58B21DBFBEF50080ADF5 /* CPXDetailAddNewLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPXDetailAddNewLocationViewController.swift; sourceTree = "<group>"; };
+		5A0E58B41DBFC5660080ADF5 /* CPXDetailListClientsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPXDetailListClientsViewController.swift; sourceTree = "<group>"; };
+		5A0E58B61DBFC70A0080ADF5 /* CPXDetailListClientsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPXDetailListClientsTableViewCell.swift; sourceTree = "<group>"; };
+		5A0E58B81DBFCC830080ADF5 /* CPXDetailAdvancedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPXDetailAdvancedViewController.swift; sourceTree = "<group>"; };
+		5A0E58BA1DBFD6330080ADF5 /* CPXDetailConfigurateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPXDetailConfigurateViewController.swift; sourceTree = "<group>"; };
+		5A0E58BC1DBFD6480080ADF5 /* CPXDetailOptimizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPXDetailOptimizeViewController.swift; sourceTree = "<group>"; };
 		5AA9291F1DBE69A100935BF4 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		5AA929231DBE6A4C00935BF4 /* if_arp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_arp.h; sourceTree = "<group>"; };
 		5AA929241DBE6A4C00935BF4 /* if_ether.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_ether.h; sourceTree = "<group>"; };
@@ -270,6 +290,8 @@
 				6A7D9C871DB6695800F6D194 /* CustomUIView.swift */,
 				6A7D9C881DB6695800F6D194 /* UIImageViewCircle.swift */,
 				6A7D9C891DB6695800F6D194 /* UIView+Animation.swift */,
+				5A0E58AA1DBF86D10080ADF5 /* HomeTableViewCell.swift */,
+				5A0E58B61DBFC70A0080ADF5 /* CPXDetailListClientsTableViewCell.swift */,
 			);
 			name = "Sub Classes";
 			path = "Shared/Sub Classes";
@@ -351,6 +373,14 @@
 			isa = PBXGroup;
 			children = (
 				5AA9291F1DBE69A100935BF4 /* HomeViewController.swift */,
+				5A0E58AC1DBFA01C0080ADF5 /* HowToConfigureViewController.swift */,
+				5A0E58AE1DBFA60F0080ADF5 /* CPXDetailViewController.swift */,
+				5A0E58B01DBFB12F0080ADF5 /* CPXDetailLocationViewController.swift */,
+				5A0E58B21DBFBEF50080ADF5 /* CPXDetailAddNewLocationViewController.swift */,
+				5A0E58B41DBFC5660080ADF5 /* CPXDetailListClientsViewController.swift */,
+				5A0E58B81DBFCC830080ADF5 /* CPXDetailAdvancedViewController.swift */,
+				5A0E58BA1DBFD6330080ADF5 /* CPXDetailConfigurateViewController.swift */,
+				5A0E58BC1DBFD6480080ADF5 /* CPXDetailOptimizeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -529,21 +559,26 @@
 				6A7D9CB91DB6695800F6D194 /* UINavigationController+Animated.swift in Sources */,
 				6A7D9CD01DB6695800F6D194 /* NetworkingUtil.swift in Sources */,
 				6A7D9CDD1DB6695800F6D194 /* User.swift in Sources */,
+				5A0E58B91DBFCC830080ADF5 /* CPXDetailAdvancedViewController.swift in Sources */,
 				5AA929301DBE6A8600935BF4 /* Utils.m in Sources */,
 				8B5E2FF31DB4F9A900981A75 /* AppDelegate.swift in Sources */,
 				6A7D9CE41DB6695800F6D194 /* RESTRequest.swift in Sources */,
 				6A7D9CB11DB6695800F6D194 /* UIAlertController+Custom.swift in Sources */,
+				5A0E58AD1DBFA01C0080ADF5 /* HowToConfigureViewController.swift in Sources */,
+				5A0E58BB1DBFD6330080ADF5 /* CPXDetailConfigurateViewController.swift in Sources */,
 				6A7D9CB51DB6695800F6D194 /* UIColor+Custom.swift in Sources */,
 				5AA929381DBE824000935BF4 /* UIViewController.swift in Sources */,
 				6A7D9CE11DB6695800F6D194 /* RESTEnum.swift in Sources */,
 				6A7D9CCC1DB6695800F6D194 /* Constants.swift in Sources */,
 				6A7D9CB41DB6695800F6D194 /* UICollectionViewController+Custom.swift in Sources */,
 				6A7D9CD61DB6695800F6D194 /* Activities.swift in Sources */,
+				5A0E58B11DBFB12F0080ADF5 /* CPXDetailLocationViewController.swift in Sources */,
 				6A7D9CD71DB6695800F6D194 /* Category.swift in Sources */,
 				5AA9292D1DBE6A7A00935BF4 /* ScanLAN.m in Sources */,
 				6A7D9CAD1DB6695800F6D194 /* RealmExtension.swift in Sources */,
 				6A7D9CC51DB6695800F6D194 /* CustomCollectionFlowLayout.swift in Sources */,
 				6A7D9CAE1DB6695800F6D194 /* ScrollableNavBar.swift in Sources */,
+				5A0E58B51DBFC5660080ADF5 /* CPXDetailListClientsViewController.swift in Sources */,
 				6A7D9CAF1DB6695800F6D194 /* ScrollableViewController.swift in Sources */,
 				6A7D9CB01DB6695800F6D194 /* TabbarButton+Custom.swift in Sources */,
 				6A7D9CB61DB6695800F6D194 /* UIImage+Custom.swift in Sources */,
@@ -551,6 +586,7 @@
 				6A7D9CB31DB6695800F6D194 /* UIButton+Custom.swift in Sources */,
 				6A7D9CB21DB6695800F6D194 /* UIApplicationExtension.swift in Sources */,
 				6A7D9CDB1DB6695800F6D194 /* Parenting.swift in Sources */,
+				5A0E58AB1DBF86D10080ADF5 /* HomeTableViewCell.swift in Sources */,
 				6A7D9CE21DB6695800F6D194 /* RESTError.swift in Sources */,
 				6A7D9CB71DB6695800F6D194 /* UIImageView+Custom.swift in Sources */,
 				6A7D9CBC1DB6695800F6D194 /* UIView+Custom.swift in Sources */,
@@ -564,11 +600,15 @@
 				5AA929351DBE6AA200935BF4 /* SimplePing.m in Sources */,
 				6A7D9CDA1DB6695800F6D194 /* ObjectSearch.swift in Sources */,
 				6A7D9CE01DB6695800F6D194 /* RESTContants.swift in Sources */,
+				5A0E58BD1DBFD6480080ADF5 /* CPXDetailOptimizeViewController.swift in Sources */,
 				6A7D9CCD1DB6695800F6D194 /* DateUtil.swift in Sources */,
 				6A7D9CC81DB6695800F6D194 /* CustomUIButton.swift in Sources */,
 				6A7D9CD91DB6695800F6D194 /* Kid.swift in Sources */,
+				5A0E58AF1DBFA60F0080ADF5 /* CPXDetailViewController.swift in Sources */,
+				5A0E58B31DBFBEF50080ADF5 /* CPXDetailAddNewLocationViewController.swift in Sources */,
 				6A7D9CCF1DB6695800F6D194 /* Enum.swift in Sources */,
 				6A7D9CAC1DB6695800F6D194 /* NSString+Custom.swift in Sources */,
+				5A0E58B71DBFC70A0080ADF5 /* CPXDetailListClientsTableViewCell.swift in Sources */,
 				6A7D9CAB1DB6695800F6D194 /* BaseViewController.swift in Sources */,
 				6A7D9CBB1DB6695800F6D194 /* UITextView+Custom.swift in Sources */,
 				6A7D9CDE1DB6695800F6D194 /* APIParams.swift in Sources */,
@@ -640,7 +680,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -679,7 +719,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

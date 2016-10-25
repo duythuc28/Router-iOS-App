@@ -12,22 +12,22 @@ import UIKit
 
 class CustomUIButton: UIButton {
 
-    @IBInspectable var borderColor: UIColor = UIColor.clearColor() {
-        didSet {
-            layer.borderColor = borderColor.CGColor
-        }
-    }
-    
-    @IBInspectable var borderWidth: CGFloat = 0 {
-        didSet {
-            layer.borderWidth = borderWidth
-        }
-    }
-    
-    @IBInspectable var cornerRadius: CGFloat = 0 {
-        didSet {
-            layer.cornerRadius = WIDTH * cornerRadius / 320
-        }
-    }
+//    @IBInspectable var borderColor: UIColor = UIColor.clearColor() {
+//        didSet {
+//            layer.borderColor = borderColor.CGColor
+//        }
+//    }
+//    
+//    @IBInspectable var borderWidth: CGFloat = 0 {
+//        didSet {
+//            layer.borderWidth = borderWidth
+//        }
+//    }
+//    
+//    @IBInspectable var cornerRadius: CGFloat = 0 {
+//        didSet {
+//            layer.cornerRadius = WIDTH * cornerRadius / 320
+//        }
+//    }
 
 }

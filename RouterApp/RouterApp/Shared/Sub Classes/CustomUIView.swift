@@ -7,27 +7,28 @@
 //
 
 import UIKit
+import Foundation
 
 @IBDesignable
 
 class CustomUIView: UIView {
 
-        @IBInspectable var borderColor: UIColor = UIColor.clearColor() {
-            didSet {
-                layer.borderColor = borderColor.CGColor
-            }
-        }
-        
-        @IBInspectable var borderWidth: CGFloat = 0 {
-            didSet {
-                layer.borderWidth = borderWidth
-            }
-        }
-        
-        @IBInspectable var cornerRadius: CGFloat = 0 {
-            didSet {
-                layer.cornerRadius = cornerRadius * WIDTH / 320
-            }
-        }
+//        @IBInspectable var borderColor: UIColor = UIColor.clearColor() {
+//            didSet {
+//                layer.borderColor = borderColor.CGColor
+//            }
+//        }
+//        
+//        @IBInspectable var borderWidth: CGFloat = 0 {
+//            didSet {
+//                layer.borderWidth = borderWidth
+//            }
+//        }
+//        
+//        @IBInspectable var cornerRadius: CGFloat = 0 {
+//            didSet {
+//                layer.cornerRadius = cornerRadius * WIDTH / 320
+//            }
+//        }
 
 }

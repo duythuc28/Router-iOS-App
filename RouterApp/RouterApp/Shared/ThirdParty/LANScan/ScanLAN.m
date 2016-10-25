@@ -82,7 +82,7 @@
 - (void)pingResult:(NSNumber*)success {
     self.timerIterationNumber++;
     if (success.boolValue) {
-        NSLog(@"SUCCESS");
+//        NSLog(@"SUCCESS");
         NSString *deviceIPAddress = [[[[NSString stringWithFormat:@"%@%d", self.baseAddress, self.currentHostAddress] stringByReplacingOccurrencesOfString:@".0" withString:@"."] stringByReplacingOccurrencesOfString:@".00" withString:@"."] stringByReplacingOccurrencesOfString:@".." withString:@".0."];
         NSString *deviceName = [self getHostFromIPAddress:[[NSString stringWithFormat:@"%@%d", self.baseAddress, self.currentHostAddress] cStringUsingEncoding:NSASCIIStringEncoding]];
 //      NSArray *names = [self hostnamesForIPv4Address:deviceIPAddress];
@@ -90,9 +90,9 @@
       NSString *macAddress = [Utils ipToMac:deviceIPAddress];
       [self.delegate scanLANDidFindNewAdrress:deviceIPAddress macAddress: macAddress havingHostName:deviceName];
     }
-    else {
-        NSLog(@"FAILURE");
-    }
+//    else {
+//        NSLog(@"FAILURE");
+//    }
     if (self.timerIterationNumber+self.baseAddressEnd>=254) {
         [self.delegate scanLANDidFinishScanning];
     }
@@ -120,7 +120,7 @@
         }
         else
         {
-            NSLog (@"Found hostname: %s", hostname);
+//            NSLog (@"Found hostname: %s", hostname);
             hostName = [NSString stringWithFormat:@"%s", hostname];
             break;
         }

@@ -11,6 +11,28 @@ private var indicatorKey: UInt8 = 0 // We still need this boilerplate
 private var loaddingViewKey: UInt8 = 0
 
 extension UIViewController {
+  
+  class func instantiateFromStoryboard() -> Self {
+    return instantiateFromStoryboardHelper(self, storyboardName: "Main")
+  }
+  
+  class func instantiateFromStoryboard(storyboardName: String) -> Self {
+    return instantiateFromStoryboardHelper(self, storyboardName: storyboardName)
+  }
+  
+  private class func instantiateFromStoryboardHelper<T>(type: T.Type, storyboardName: String) -> T {
+    var storyboardId = ""
+    let components = "\(type.dynamicType)".componentsSeparatedByString(".")
+    
+    if components.count > 1 {
+      storyboardId = components[0]
+    }
+    let storyboad = UIStoryboard(name: storyboardName, bundle: nil)
+    let controller = storyboad.instantiateViewControllerWithIdentifier(storyboardId) as! T
+    
+    return controller
+  }
+  
   var indicator: UIActivityIndicatorView {
     get {
       return associatedObject(self, key: &indicatorKey)
@@ -61,6 +83,7 @@ extension UIViewController {
   
   func showLoading() {
     if let window = UIApplication.sharedApplication().keyWindow {
+      indicator.hidden = false
       indicator.startAnimating()
       window.addSubview(loadingView)
     }
