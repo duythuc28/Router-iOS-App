@@ -1,58 +1,52 @@
 //
-//  UserAPI.swift
-//  Swift_Core
+//  RESTMultipart.swift
+//  9Gags
 //
-//  Created by Canh on 1/5/16.
-//  Copyright © 2016 iOS_Dev16. All rights reserved.
+//  Created by iOs_Dev on 1/11/16.
+//  Copyright © 2016 toan.quach. All rights reserved.
 //
 
 import Foundation
 import SwiftyJSON
 
 class RESTMultipart: NSObject {
+  
+  var name: String! = ""
+  var contentType: String! = ""
+  var data: NSData!
+  
+  init(name: String!, contentType: String!, data: NSData!) {
+    self.name = name
+    self.contentType = contentType
+    self.data = data
+  }
+  
+  func getHeader() -> [String: String] {
+    return ["Content-Disposition" : "form-data; name=\(self.name)", "Content-Type" :  self.contentType]
+  }
+  
+  class JSONPart: RESTMultipart {
+    init(name: String!, jsonObject: NSObject) {
+      let data: NSData! = NSKeyedArchiver.archivedDataWithRootObject(JSON.init(jsonObject).dictionaryObject!)
+      
+      super.init(name: name, contentType: "application/json; charset=UTF-8", data: data)
+    }
+  }
+  
+  class FilePart: RESTMultipart {
     
-    var name: String! = ""
-    var contentType: String! = ""
-    var data: NSData!
+    var fileName: String!
     
-    init(name: String!, contentType: String!, data: NSData!) {
-        self.name = name
-        self.contentType = contentType
-        self.data = data
+    init(name: String!, fileName: String!, data: NSData!) {
+      super.init(name: name, contentType: "application/octet-stream", data: data)
+      self.fileName = fileName
     }
     
-    func getHeader() -> NSMutableDictionary {
-        let header = NSMutableDictionary()
-        
-        header.setValue("form-data; name=" + self.name, forKey: "Content-Disposition")
-        header.setValue(self.contentType, forKey: "Content-Type")
-        
-        return header
+    override func getHeader() -> [String: String] {
+      var header = super.getHeader()
+      header["Content-Disposition"] = "form-data; name=\"\(self.name)\"; filename=\"\(self.fileName)\""
+      return header
     }
-    
-    class JSONPart: RESTMultipart {
-        init(name: String!, jsonObject: NSObject) {
-            let data: NSData! = NSKeyedArchiver.archivedDataWithRootObject(JSON.init(jsonObject).dictionaryObject!)
-            
-            super.init(name: name, contentType: "application/json; charset=UTF-8", data: data)
-        }
-    }
-    
-    class FilePart: RESTMultipart {
-        
-        var fileName: String!
-        
-        init(name: String!, fileName: String!, data: NSData!) {
-            super.init(name: name, contentType: "application/octet-stream", data: data)
-            self.fileName = fileName
-        }
-        
-        override func getHeader() -> NSMutableDictionary {
-            let header = super.getHeader()
-            header.setValue("form-data; name=" + self.name + ";" +
-                "filename=" + self.fileName, forKey: "Content-Disposition")
-            
-            return header
-        }
-    }
+  }
+  
 }

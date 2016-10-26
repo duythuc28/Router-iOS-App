@@ -9,42 +9,46 @@
 import UIKit
 import ObjectMapper
 
-class UpdateUserParams: NSObject, Mappable {
-    
-    var token = ""
-    var firstName = ""
-    var lastName = ""
-    var phoneNumber = ""
-    var year = ""
-    var oldPassword = ""
-    var newPassword = ""
-    var confirmPassword = ""
-    
-    required convenience init?(_ map: Map) {
-        self.init()
-    }
-    
-    
-    
-    func setupData(token: String , firstName : String , lastName : String , phoneNumber:String, year : String , oldPassword : String, newPassword : String, confirmPassword : String) {
-        self.token = token
-        self.firstName = firstName
-        self.lastName = lastName
-        self.phoneNumber = phoneNumber
-        self.year = year
-        self.oldPassword = oldPassword
-        self.newPassword = newPassword
-        self.confirmPassword = confirmPassword
-    }
-    
-    func mapping(map: Map) {
-        token           <- map["token"]
-        firstName       <- map["fname"]
-        lastName        <- map["lname"]
-        phoneNumber     <- map["phone_no"]
-        year            <- map["year"]
-        oldPassword     <- map["old_password"]
-        newPassword     <- map["new_password"]
-        confirmPassword <- map["confirm_new_password"]
-    }
+class APIParams: RESTParam {
+  var method: String = ""
+  var params: [String] = []
+  
+  convenience init(method mtd: String, params parameters: [String]) {
+    self.init()
+    self.method = mtd
+    self.params = parameters
+  }
+  
+  override init() {
+    super.init()
+  }
+  
+  required convenience init?(_ map: Map) {
+    self.init()
+  }
+  
+  override func mapping(map: Map) {
+    method           <- map["method"]
+    params           <- map["params"]
+  }
+}
+
+class GetCPXDetailParams: RESTParam {
+  var method: String
+  var params: [String]
+  
+  override init() {
+    method = "login"
+    params = ["admin", "password"]
+    super.init()
+  }
+  
+  required convenience init?(_ map: Map) {
+    self.init()
+  }
+  
+  override func mapping(map: Map) {
+    method           <- map["method"]
+    params           <- map["params"]
+  }
 }

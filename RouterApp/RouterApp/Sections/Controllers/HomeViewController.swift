@@ -110,8 +110,24 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension HomeViewController: ScanLANDelegate {
   func scanLANDidFindNewAdrress(address: String!, macAddress: String!, havingHostName hostName: String!) {
-    let device = CPXDevice(name: hostName, ip: address, mac: macAddress)
-    connectedDevices.append(device)
+    // hard code for device contains prefix MAC Address 04:F0:21:1A:04:88
+    if macAddress != nil {
+      if macAddress.containsString("04:F0") {
+        // Authenticate router
+        APIManager.authenticateRouter(withIP: address, completion: { (result, error) in
+          if result != nil {
+            // Call API to get CPX detail
+            APIManager.getCPXDetail(withIP: address, token: result!, completion: { (token, error) in
+              print(result)
+            })
+          }
+        })
+        
+        
+        let device = CPXDevice(name: hostName, ip: address, mac: macAddress)
+        connectedDevices.append(device)
+      }
+    }
   }
   
   func scanLANDidFinishScanning() {

@@ -1,48 +1,32 @@
 //
-//  UserAPI.swift
-//  Swift_Core
+//  RESTError.swift
+//  9Gags
 //
-//  Created by Canh on 1/5/16.
-//  Copyright © 2016 iOS_Dev16. All rights reserved.
+//  Created by iOs_Dev on 1/8/16.
+//  Copyright © 2016 Duong Tran. All rights reserved.
 //
 
 import Foundation
 import SwiftyJSON
+import ObjectMapper
+import Alamofire
 
-class RESTError: NSObject {
-    var errorFromResponse:  String? = ""
-    var errorFromServer:    String? = ""
-    override init() {
-        errorFromServer = "" //set default string here
-        errorFromServer = ""
+class RESTError: RESTResponse {
+  
+  convenience required init?(_ map: Map) {
+    self.init()
+  }
+  
+  static func parseError(response: Response<AnyObject, NSError>) -> RESTError {
+    let restError = (response.result.value != nil ? Mapper<RESTError>().map(response.result.value) : RESTError())
+    let error = response.result.error
+    
+    if error != nil {
+      restError?.message = (error?.localizedDescription)!
+      restError?.statusCode = (error?.code)!
     }
     
-    static func parseError(responseData: NSData?, error: NSError?) -> RESTError {
-        
-        let restError: RESTError = RESTError.init()
-        
-        if (responseData != nil) {
-            let jsonObj: JSON = JSON(data: responseData!)
-            if(jsonObj != nil) {
-                let message = jsonObj[RESTContants.kDefineMessageKeyFromResponseData].stringValue
-                
-                if(message.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0) {
-                    restError.errorFromServer = message
-                }
-                else {
-                    restError.errorFromServer = RESTContants.kDefineDefaultMessageKeyFromResponseData
-                }
-            }
-            else {
-                restError.errorFromServer = NSString(data: responseData!, encoding: NSUTF8StringEncoding) as String?
-            }
-        }
-        
-        if(error != nil) {
-            let errorString: String! = error!.localizedDescription
-            restError.errorFromResponse = errorString
-        }
-        
-        return restError
-    }
+    return restError!
+  }
+  
 }

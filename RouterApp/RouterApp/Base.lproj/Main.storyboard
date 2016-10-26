@@ -157,7 +157,7 @@
                                     <outlet property="delegate" destination="s0p-5C-FfG" id="lsR-0T-mLx"/>
                                 </connections>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fES-NM-AAW">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_wifi" translatesAutoresizingMaskIntoConstraints="NO" id="fES-NM-AAW">
                                 <rect key="frame" x="208" y="95" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="bAu-tl-sV4"/>
@@ -178,12 +178,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home Mesh" id="28D-uZ-DnR">
-                        <barButtonItem key="leftBarButtonItem" title="refresh" id="DCR-4o-SRl">
+                        <barButtonItem key="leftBarButtonItem" image="ic_reload" id="DCR-4o-SRl">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="reScan:" destination="s0p-5C-FfG" id="mS6-xK-qQ8"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="info" id="XqK-OP-8dl">
+                        <barButtonItem key="rightBarButtonItem" image="ic_info" id="XqK-OP-8dl">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="showInfo:" destination="s0p-5C-FfG" id="0Rd-Fn-ME9"/>
                             </connections>
@@ -795,4 +797,9 @@
             <point key="canvasLocation" x="-539" y="842"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_info" width="22" height="22"/>
+        <image name="ic_reload" width="22" height="22"/>
+        <image name="ic_wifi" width="64" height="64"/>
+    </resources>
 </document>

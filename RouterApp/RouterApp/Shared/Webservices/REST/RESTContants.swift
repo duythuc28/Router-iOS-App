@@ -1,66 +1,40 @@
 //
-//  UserAPI.swift
-//  Swift_Core
+//  RESTContants.swift
+//  9Gags
 //
-//  Created by Canh on 1/5/16.
-//  Copyright © 2016 iOS_Dev16. All rights reserved.
+//  Created by iOs_Dev on 1/8/16.
+//  Copyright © 2016 Duong Tran. All rights reserved.
 //
 
 import Foundation
 import SwiftyJSON
+import CoreLocation
 
 class RESTContants: NSObject {
-    
-    //MARK: RESTRequest Header Keys
-    static let kDefineRESTRequestHeaderKey              = "Header"
-    static let kDefineRESTRequestAuthorizationKey       = "Authorization"
-    static let kDefineRESTRequestContentTypeKey         = "Content-Type"
-    static let kDefineRESTRequestAcceptKey              = "Accept"
-    
-    //MARK: Keys for parser
-    static let kDefineSuccessKeyFromResponseData        = "status"
-    static let kDefineMessageKeyFromResponseData        = "error"
-    static let kDefineDefaultMessageKeyFromResponseData = "unknow_error"
-    
-    //MARK: Prepairing request
-    static let kDefineRequestTimeOut                    = 300.0
-    static let kDefineStatusCodeSuccess                 = 200
-    
-    //MARK: Webservice url
-    
-    // Production
-    //static let kDefineWebserviceUrl                     = "http://experfi.com/experfi_api/Api/"
-    static let kDefineWebserviceUrl                     = "http://experfi.com/experfi_api/ios/Api/"
-    // Dev
-    static let kDefineWebImageURL                       = "http://experfi.com/experfi_api/images/"
-    
-    static let kDefineWebserviceResourceUrl             = ""
 
-    static let headers = [ "Content-Type" : "application/json"]
-    
-}
+  //MARK: RESTRequest Header Keys
+  static let RequestHeaderKey                   = "Header"
+  static let RequestAuthorizationKey            = "Authorization"
+  static let RequestContentTypeKey              = "Content-Type"
+  static let RequestAcceptKey                   = "Accept"
+  static let Headers                            = ["Content-Type" : "application/json"]
+  static let PrefixToken                        = "Bearer "
 
-extension RESTRequest {
-    
-    static func checkSuccessFromResponseData(responseData: NSData?) -> Bool {
-        if(responseData?.length == 0) {
-            return false
-        }
-        
-        let jsonObj: JSON = JSON(data: responseData!)
-        if(jsonObj != nil)
-        {
-            let isSuccess: Bool = jsonObj[RESTContants.kDefineSuccessKeyFromResponseData].boolValue
-            
-            return isSuccess
-        }
-        
-        
-        return false
-    }
-}
+  //MARK: Keys for parser
+  static let SuccessKeyFromResponseData         = "status"
+  static let MessageKeyFromResponseData         = "error"
+  static let DefaultMessageKeyFromResponseData  = "unknow_error"
 
-enum RESTRequestBodyType {
-    case JSON
-    case Form
+  //MARK: Prepairing request
+  static let RequestTimeOut                     = 90.0
+  static let StatusCodeSuccess                  = 200
+
+  //MARK: Webservice url
+//  static let WebserviceUrl                      = "http://dliver.local.sutrix.com/api/"
+  static let WebserviceUrl                      = "https://dliver.local.sutrix.com/api/"
+  static let HostName                           = "dliver.local.sutrix.com"
+  static let WebserviceResourceUrl              = ""
+  static let kAuthenticate = "/cgi-bin/luci/rpc/auth"
+  static let kGetCPXDetail = "/cgi-bin/luci/rpc/mesh?auth="
+
 }

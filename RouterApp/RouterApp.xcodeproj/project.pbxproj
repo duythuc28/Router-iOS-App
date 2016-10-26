@@ -17,6 +17,15 @@
 		5A0E58B91DBFCC830080ADF5 /* CPXDetailAdvancedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58B81DBFCC830080ADF5 /* CPXDetailAdvancedViewController.swift */; };
 		5A0E58BB1DBFD6330080ADF5 /* CPXDetailConfigurateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58BA1DBFD6330080ADF5 /* CPXDetailConfigurateViewController.swift */; };
 		5A0E58BD1DBFD6480080ADF5 /* CPXDetailOptimizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58BC1DBFD6480080ADF5 /* CPXDetailOptimizeViewController.swift */; };
+		5A73E3231DC1031C00FF56E6 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A73E3221DC1031C00FF56E6 /* UIColor.swift */; };
+		5A73E3251DC1063300FF56E6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A73E3241DC1063300FF56E6 /* Images.xcassets */; };
+		5A73E3271DC1091300FF56E6 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A73E3261DC1091300FF56E6 /* APIManager.swift */; };
+		5A73E32E1DC1113600FF56E6 /* RESTContants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A73E3281DC1113600FF56E6 /* RESTContants.swift */; };
+		5A73E32F1DC1113600FF56E6 /* RESTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A73E3291DC1113600FF56E6 /* RESTError.swift */; };
+		5A73E3301DC1113600FF56E6 /* RESTMultipart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A73E32A1DC1113600FF56E6 /* RESTMultipart.swift */; };
+		5A73E3311DC1113600FF56E6 /* RESTParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A73E32B1DC1113600FF56E6 /* RESTParam.swift */; };
+		5A73E3321DC1113600FF56E6 /* RESTRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A73E32C1DC1113600FF56E6 /* RESTRequest.swift */; };
+		5A73E3331DC1113600FF56E6 /* RESTResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A73E32D1DC1113600FF56E6 /* RESTResponse.swift */; };
 		5AA929201DBE69A100935BF4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA9291F1DBE69A100935BF4 /* HomeViewController.swift */; };
 		5AA9292D1DBE6A7A00935BF4 /* ScanLAN.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA9292C1DBE6A7A00935BF4 /* ScanLAN.m */; };
 		5AA929301DBE6A8600935BF4 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA9292F1DBE6A8600935BF4 /* Utils.m */; };
@@ -63,14 +72,8 @@
 		6A7D9CDC1DB6695800F6D194 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D9C9E1DB6695800F6D194 /* Rating.swift */; };
 		6A7D9CDD1DB6695800F6D194 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D9C9F1DB6695800F6D194 /* User.swift */; };
 		6A7D9CDE1DB6695800F6D194 /* APIParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D9CA11DB6695800F6D194 /* APIParams.swift */; };
-		6A7D9CE01DB6695800F6D194 /* RESTContants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D9CA41DB6695800F6D194 /* RESTContants.swift */; };
-		6A7D9CE11DB6695800F6D194 /* RESTEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D9CA51DB6695800F6D194 /* RESTEnum.swift */; };
-		6A7D9CE21DB6695800F6D194 /* RESTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D9CA61DB6695800F6D194 /* RESTError.swift */; };
-		6A7D9CE31DB6695800F6D194 /* RESTMultipart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D9CA71DB6695800F6D194 /* RESTMultipart.swift */; };
-		6A7D9CE41DB6695800F6D194 /* RESTRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D9CA81DB6695800F6D194 /* RESTRequest.swift */; };
 		8B5E2FF31DB4F9A900981A75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5E2FF21DB4F9A900981A75 /* AppDelegate.swift */; };
 		8B5E2FF81DB4F9A900981A75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E2FF61DB4F9A900981A75 /* Main.storyboard */; };
-		8B5E2FFA1DB4F9A900981A75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E2FF91DB4F9A900981A75 /* Assets.xcassets */; };
 		8B5E2FFD1DB4F9A900981A75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B5E2FFB1DB4F9A900981A75 /* LaunchScreen.storyboard */; };
 		9D410C7968C62E2FAB51DE2A /* Pods_RouterApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 764FFE16373A60F414B7E35E /* Pods_RouterApp.framework */; };
 /* End PBXBuildFile section */
@@ -87,6 +90,15 @@
 		5A0E58B81DBFCC830080ADF5 /* CPXDetailAdvancedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPXDetailAdvancedViewController.swift; sourceTree = "<group>"; };
 		5A0E58BA1DBFD6330080ADF5 /* CPXDetailConfigurateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPXDetailConfigurateViewController.swift; sourceTree = "<group>"; };
 		5A0E58BC1DBFD6480080ADF5 /* CPXDetailOptimizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPXDetailOptimizeViewController.swift; sourceTree = "<group>"; };
+		5A73E3221DC1031C00FF56E6 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		5A73E3241DC1063300FF56E6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5A73E3261DC1091300FF56E6 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		5A73E3281DC1113600FF56E6 /* RESTContants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTContants.swift; sourceTree = "<group>"; };
+		5A73E3291DC1113600FF56E6 /* RESTError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTError.swift; sourceTree = "<group>"; };
+		5A73E32A1DC1113600FF56E6 /* RESTMultipart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTMultipart.swift; sourceTree = "<group>"; };
+		5A73E32B1DC1113600FF56E6 /* RESTParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTParam.swift; sourceTree = "<group>"; };
+		5A73E32C1DC1113600FF56E6 /* RESTRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTRequest.swift; sourceTree = "<group>"; };
+		5A73E32D1DC1113600FF56E6 /* RESTResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTResponse.swift; sourceTree = "<group>"; };
 		5AA9291F1DBE69A100935BF4 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		5AA929231DBE6A4C00935BF4 /* if_arp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_arp.h; sourceTree = "<group>"; };
 		5AA929241DBE6A4C00935BF4 /* if_ether.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_ether.h; sourceTree = "<group>"; };
@@ -142,17 +154,11 @@
 		6A7D9C9E1DB6695800F6D194 /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		6A7D9C9F1DB6695800F6D194 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6A7D9CA11DB6695800F6D194 /* APIParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIParams.swift; sourceTree = "<group>"; };
-		6A7D9CA41DB6695800F6D194 /* RESTContants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTContants.swift; sourceTree = "<group>"; };
-		6A7D9CA51DB6695800F6D194 /* RESTEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTEnum.swift; sourceTree = "<group>"; };
-		6A7D9CA61DB6695800F6D194 /* RESTError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTError.swift; sourceTree = "<group>"; };
-		6A7D9CA71DB6695800F6D194 /* RESTMultipart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTMultipart.swift; sourceTree = "<group>"; };
-		6A7D9CA81DB6695800F6D194 /* RESTRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RESTRequest.swift; sourceTree = "<group>"; };
 		764FFE16373A60F414B7E35E /* Pods_RouterApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RouterApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		778F3D77644C28CF87D4688C /* Pods-RouterApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RouterApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-RouterApp/Pods-RouterApp.release.xcconfig"; sourceTree = "<group>"; };
 		8B5E2FEF1DB4F9A900981A75 /* RouterApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RouterApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B5E2FF21DB4F9A900981A75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B5E2FF71DB4F9A900981A75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8B5E2FF91DB4F9A900981A75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../Assets.xcassets; sourceTree = "<group>"; };
 		8B5E2FFC1DB4F9A900981A75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B5E2FFE1DB4F9A900981A75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -249,6 +255,7 @@
 		6A7D9C5E1DB6695800F6D194 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5A73E3221DC1031C00FF56E6 /* UIColor.swift */,
 				6A7D9C5F1DB6695800F6D194 /* BaseViewController.swift */,
 				6A7D9C601DB6695800F6D194 /* NSString+Custom.swift */,
 				6A7D9C611DB6695800F6D194 /* RealmExtension.swift */,
@@ -275,7 +282,6 @@
 		6A7D9C761DB6695800F6D194 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8B5E2FF91DB4F9A900981A75 /* Assets.xcassets */,
 			);
 			name = Resources;
 			path = Shared/Resources;
@@ -329,6 +335,7 @@
 				6A7D9C971DB6695800F6D194 /* Models */,
 				6A7D9CA01DB6695800F6D194 /* Params */,
 				6A7D9CA31DB6695800F6D194 /* REST */,
+				5A73E3261DC1091300FF56E6 /* APIManager.swift */,
 			);
 			name = Webservices;
 			path = Shared/Webservices;
@@ -360,11 +367,12 @@
 		6A7D9CA31DB6695800F6D194 /* REST */ = {
 			isa = PBXGroup;
 			children = (
-				6A7D9CA41DB6695800F6D194 /* RESTContants.swift */,
-				6A7D9CA51DB6695800F6D194 /* RESTEnum.swift */,
-				6A7D9CA61DB6695800F6D194 /* RESTError.swift */,
-				6A7D9CA71DB6695800F6D194 /* RESTMultipart.swift */,
-				6A7D9CA81DB6695800F6D194 /* RESTRequest.swift */,
+				5A73E3281DC1113600FF56E6 /* RESTContants.swift */,
+				5A73E3291DC1113600FF56E6 /* RESTError.swift */,
+				5A73E32A1DC1113600FF56E6 /* RESTMultipart.swift */,
+				5A73E32B1DC1113600FF56E6 /* RESTParam.swift */,
+				5A73E32C1DC1113600FF56E6 /* RESTRequest.swift */,
+				5A73E32D1DC1113600FF56E6 /* RESTResponse.swift */,
 			);
 			path = REST;
 			sourceTree = "<group>";
@@ -425,6 +433,7 @@
 				6A7D9C4B1DB6683B00F6D194 /* Sections */,
 				6A7D9C491DB6680B00F6D194 /* Supporting Files */,
 				6A7D9C481DB667F600F6D194 /* Shared */,
+				5A73E3241DC1063300FF56E6 /* Images.xcassets */,
 			);
 			path = RouterApp;
 			sourceTree = "<group>";
@@ -495,8 +504,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A73E3251DC1063300FF56E6 /* Images.xcassets in Resources */,
 				8B5E2FFD1DB4F9A900981A75 /* LaunchScreen.storyboard in Resources */,
-				8B5E2FFA1DB4F9A900981A75 /* Assets.xcassets in Resources */,
 				8B5E2FF81DB4F9A900981A75 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,38 +565,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A73E3271DC1091300FF56E6 /* APIManager.swift in Sources */,
+				5A73E32E1DC1113600FF56E6 /* RESTContants.swift in Sources */,
 				6A7D9CB91DB6695800F6D194 /* UINavigationController+Animated.swift in Sources */,
 				6A7D9CD01DB6695800F6D194 /* NetworkingUtil.swift in Sources */,
 				6A7D9CDD1DB6695800F6D194 /* User.swift in Sources */,
 				5A0E58B91DBFCC830080ADF5 /* CPXDetailAdvancedViewController.swift in Sources */,
 				5AA929301DBE6A8600935BF4 /* Utils.m in Sources */,
 				8B5E2FF31DB4F9A900981A75 /* AppDelegate.swift in Sources */,
-				6A7D9CE41DB6695800F6D194 /* RESTRequest.swift in Sources */,
 				6A7D9CB11DB6695800F6D194 /* UIAlertController+Custom.swift in Sources */,
 				5A0E58AD1DBFA01C0080ADF5 /* HowToConfigureViewController.swift in Sources */,
+				5A73E3301DC1113600FF56E6 /* RESTMultipart.swift in Sources */,
 				5A0E58BB1DBFD6330080ADF5 /* CPXDetailConfigurateViewController.swift in Sources */,
 				6A7D9CB51DB6695800F6D194 /* UIColor+Custom.swift in Sources */,
 				5AA929381DBE824000935BF4 /* UIViewController.swift in Sources */,
-				6A7D9CE11DB6695800F6D194 /* RESTEnum.swift in Sources */,
 				6A7D9CCC1DB6695800F6D194 /* Constants.swift in Sources */,
 				6A7D9CB41DB6695800F6D194 /* UICollectionViewController+Custom.swift in Sources */,
 				6A7D9CD61DB6695800F6D194 /* Activities.swift in Sources */,
 				5A0E58B11DBFB12F0080ADF5 /* CPXDetailLocationViewController.swift in Sources */,
 				6A7D9CD71DB6695800F6D194 /* Category.swift in Sources */,
+				5A73E3321DC1113600FF56E6 /* RESTRequest.swift in Sources */,
 				5AA9292D1DBE6A7A00935BF4 /* ScanLAN.m in Sources */,
 				6A7D9CAD1DB6695800F6D194 /* RealmExtension.swift in Sources */,
 				6A7D9CC51DB6695800F6D194 /* CustomCollectionFlowLayout.swift in Sources */,
 				6A7D9CAE1DB6695800F6D194 /* ScrollableNavBar.swift in Sources */,
+				5A73E3231DC1031C00FF56E6 /* UIColor.swift in Sources */,
 				5A0E58B51DBFC5660080ADF5 /* CPXDetailListClientsViewController.swift in Sources */,
 				6A7D9CAF1DB6695800F6D194 /* ScrollableViewController.swift in Sources */,
 				6A7D9CB01DB6695800F6D194 /* TabbarButton+Custom.swift in Sources */,
 				6A7D9CB61DB6695800F6D194 /* UIImage+Custom.swift in Sources */,
-				6A7D9CE31DB6695800F6D194 /* RESTMultipart.swift in Sources */,
 				6A7D9CB31DB6695800F6D194 /* UIButton+Custom.swift in Sources */,
+				5A73E3331DC1113600FF56E6 /* RESTResponse.swift in Sources */,
+				5A73E3311DC1113600FF56E6 /* RESTParam.swift in Sources */,
 				6A7D9CB21DB6695800F6D194 /* UIApplicationExtension.swift in Sources */,
 				6A7D9CDB1DB6695800F6D194 /* Parenting.swift in Sources */,
 				5A0E58AB1DBF86D10080ADF5 /* HomeTableViewCell.swift in Sources */,
-				6A7D9CE21DB6695800F6D194 /* RESTError.swift in Sources */,
 				6A7D9CB71DB6695800F6D194 /* UIImageView+Custom.swift in Sources */,
 				6A7D9CBC1DB6695800F6D194 /* UIView+Custom.swift in Sources */,
 				6A7D9CCB1DB6695800F6D194 /* UIView+Animation.swift in Sources */,
@@ -599,7 +611,6 @@
 				6A7D9CD11DB6695800F6D194 /* SharingHelper.swift in Sources */,
 				5AA929351DBE6AA200935BF4 /* SimplePing.m in Sources */,
 				6A7D9CDA1DB6695800F6D194 /* ObjectSearch.swift in Sources */,
-				6A7D9CE01DB6695800F6D194 /* RESTContants.swift in Sources */,
 				5A0E58BD1DBFD6480080ADF5 /* CPXDetailOptimizeViewController.swift in Sources */,
 				6A7D9CCD1DB6695800F6D194 /* DateUtil.swift in Sources */,
 				6A7D9CC81DB6695800F6D194 /* CustomUIButton.swift in Sources */,
@@ -612,6 +623,7 @@
 				6A7D9CAB1DB6695800F6D194 /* BaseViewController.swift in Sources */,
 				6A7D9CBB1DB6695800F6D194 /* UITextView+Custom.swift in Sources */,
 				6A7D9CDE1DB6695800F6D194 /* APIParams.swift in Sources */,
+				5A73E32F1DC1113600FF56E6 /* RESTError.swift in Sources */,
 				6A7D9CD21DB6695800F6D194 /* SmartImageView.swift in Sources */,
 				6A7D9CD81DB6695800F6D194 /* Game.swift in Sources */,
 				6A7D9CBA1DB6695800F6D194 /* UITableViewController+Custom.swift in Sources */,
@@ -731,6 +743,7 @@
 			baseConfigurationReference = 341B9307B8DA183C5B89FA3C /* Pods-RouterApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = RouterApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -746,6 +759,7 @@
 			baseConfigurationReference = 778F3D77644C28CF87D4688C /* Pods-RouterApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = RouterApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
