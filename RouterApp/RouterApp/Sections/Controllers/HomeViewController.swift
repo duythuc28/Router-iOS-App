@@ -36,7 +36,7 @@ class HomeViewController: UIViewController {
   }
   
   private func startScanning() {
-    self.showLoading()
+    startLoadingIndicator()
     if scanLAN == nil {
       scanLAN = ScanLAN.init(delegate: self)
       connectedDevices.removeAll()
@@ -110,7 +110,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension HomeViewController: ScanLANDelegate {
   func scanLANDidFindNewAdrress(address: String!, macAddress: String!, havingHostName hostName: String!) {
-    // hard code for device contains prefix MAC Address 04:F0:21:1A:04:88
+    // TODO: hard code for device contains prefix MAC Address 04:F0:21:1A:04:88
     if macAddress != nil {
       if macAddress.containsString("04:F0") {
         // Authenticate router
@@ -131,7 +131,7 @@ extension HomeViewController: ScanLANDelegate {
   }
   
   func scanLANDidFinishScanning() {
-    self.hideLoading()
+    stopLoadingIndicator()
     print("Scan completely")
   }
   
