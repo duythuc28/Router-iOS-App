@@ -8,4 +8,5 @@ pod 'Reachability'
 pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON', :branch => 'swift2'
 pod 'IQKeyboardManagerSwift', '4.0.3'
 pod 'ReachabilitySwift'
+pod 'NVActivityIndicatorView', :git => 'https://github.com/ninjaprox/NVActivityIndicatorView.git', :branch => 'swift2.3'
 end

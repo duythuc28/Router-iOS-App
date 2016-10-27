@@ -6,11 +6,13 @@
 //
 //
 import UIKit
+import NVActivityIndicatorView
 
 private var indicatorKey: UInt8 = 0 // We still need this boilerplate
 private var loaddingViewKey: UInt8 = 0
+let loadingIndicatorSize = CGSize(width: RATIO.SCREEN_WIDTH * 35, height: RATIO.SCREEN_WIDTH * 35)
 
-extension UIViewController {
+extension UIViewController: NVActivityIndicatorViewable {
   
   class func instantiateFromStoryboard() -> Self {
     return instantiateFromStoryboardHelper(self, storyboardName: "Main")
@@ -32,67 +34,17 @@ extension UIViewController {
     
     return controller
   }
-  
-  var indicator: UIActivityIndicatorView {
-    get {
-      return associatedObject(self, key: &indicatorKey)
-      {
-        let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.activityIndicatorViewStyle = .WhiteLarge
-        return activityIndicator
-      }
+    
+    /**
+     Display loading indicator
+     */
+    func startLoadingIndicator() {
+        startAnimating(loadingIndicatorSize, message: "", type: .BallSpinFadeLoader , color: UIColor.whiteColor(), padding: 0, displayTimeThreshold: 0, minimumDisplayTime: 0)
     }
-    set { associateObject(self, key: &indicatorKey, value: newValue) }
-  }
-  
-  var loadingView: UIView { //stored property
-    get {
-      return associatedObject(self, key: &loaddingViewKey)
-      {
-        let view = UIView()
-        view.frame = Screen.BOUNDS
-        view.backgroundColor = UIColor.blackColor()
-        view.layer.opacity = 0.1
-        self.indicator.center = view.center
-        view.addSubview(self.indicator)
-        return view
-      }
+    /**
+     Hide loading indicator
+     */
+    func stopLoadingIndicator() {
+        stopAnimating()
     }
-    set { associateObject(self, key: &loaddingViewKey, value: newValue) }
-  }
-  
-  func associatedObject<ValueType: AnyObject>(
-    base: AnyObject,
-    key: UnsafePointer<UInt8>,
-    initialiser: () -> ValueType)
-    -> ValueType {
-      if let associated = objc_getAssociatedObject(base, key)
-        as? ValueType { return associated }
-      let associated = initialiser()
-      objc_setAssociatedObject(base, key, associated,
-                               .OBJC_ASSOCIATION_RETAIN)
-      return associated
-  }
-  func associateObject<ValueType: AnyObject>(
-    base: AnyObject,
-    key: UnsafePointer<UInt8>,
-    value: ValueType) {
-    objc_setAssociatedObject(base, key, value,
-                             .OBJC_ASSOCIATION_RETAIN)
-  }
-  
-  func showLoading() {
-    if let window = UIApplication.sharedApplication().keyWindow {
-      indicator.hidden = false
-      indicator.startAnimating()
-      window.addSubview(loadingView)
-    }
-  }
-  
-  func hideLoading() {
-    indicator.stopAnimating()
-    loadingView.removeFromSuperview()
-  }
-  
-  
 }
