@@ -401,7 +401,7 @@
                         <sections>
                             <tableViewSection id="B3V-9l-gia">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="GQE-NM-7yr">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="70" id="GQE-NM-7yr">
                                         <rect key="frame" x="0.0" y="64" width="600" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GQE-NM-7yr" id="rwa-U8-Rf4">
@@ -752,7 +752,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RZd-Lg-Sm3">
-                                                    <rect key="frame" x="10" y="128" width="580" height="1"/>
+                                                    <rect key="frame" x="10" y="117" width="580" height="1"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="7ym-5a-INq"/>
@@ -765,10 +765,10 @@
                                                 <constraint firstItem="Fmh-Oc-z44" firstAttribute="top" secondItem="Asa-eI-pMI" secondAttribute="bottom" constant="10" id="El9-nh-iL1"/>
                                                 <constraint firstItem="Fmh-Oc-z44" firstAttribute="leading" secondItem="Asa-eI-pMI" secondAttribute="leading" id="KDb-Ya-zw4"/>
                                                 <constraint firstItem="pnE-EH-l8X" firstAttribute="top" secondItem="Qo1-rb-jaw" secondAttribute="top" constant="15" id="L7M-f6-RLO"/>
+                                                <constraint firstItem="RZd-Lg-Sm3" firstAttribute="top" secondItem="Fmh-Oc-z44" secondAttribute="bottom" constant="10" id="Noo-Nq-Gyq"/>
                                                 <constraint firstAttribute="trailing" secondItem="pnE-EH-l8X" secondAttribute="trailing" constant="10" id="T9g-wk-S8s"/>
                                                 <constraint firstItem="Asa-eI-pMI" firstAttribute="top" secondItem="pnE-EH-l8X" secondAttribute="bottom" constant="5" id="TLw-0T-XA4"/>
                                                 <constraint firstItem="Asa-eI-pMI" firstAttribute="trailing" secondItem="pnE-EH-l8X" secondAttribute="trailing" id="eM7-s9-Xxv"/>
-                                                <constraint firstAttribute="bottom" secondItem="RZd-Lg-Sm3" secondAttribute="bottom" id="hwz-UC-C8U"/>
                                                 <constraint firstItem="RZd-Lg-Sm3" firstAttribute="leading" secondItem="Qo1-rb-jaw" secondAttribute="leading" constant="10" id="j2t-Re-0wq"/>
                                                 <constraint firstAttribute="trailing" secondItem="RZd-Lg-Sm3" secondAttribute="trailing" constant="10" id="sR7-Yd-XwD"/>
                                             </constraints>
