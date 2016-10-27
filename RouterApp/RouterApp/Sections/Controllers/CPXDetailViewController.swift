@@ -75,10 +75,10 @@ class CPXDetailViewController: UITableViewController {
   }
   
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    tableView.deselectRowAtIndexPath(indexPath, animated: true)
     if indexPath.row == 0 {
       return
     }
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
     if let cell = tableView.cellForRowAtIndexPath(indexPath) {
       switch cell.tag {
       case TypeInfo.Location.rawValue:

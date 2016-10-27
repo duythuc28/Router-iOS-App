@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import RealmSwift
+import Realm
+
+
+let realmDB = try! Realm()
 
 class Constants: NSObject {
   

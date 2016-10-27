@@ -21,7 +21,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
     UIApplication.sharedApplication().statusBarStyle = .LightContent
     
+    if !isLoadedLocations() {
+      // Save location
+      let locations = ["Tranning Room", "Bedroom", "Downstairs", "Family Room", "Hallway", "Office", "room of Requirement", "Situation Room", "Upstairs"]
+      try! realmDB.write({ 
+        for lot in locations {
+          realmDB.add(Location(locationName: lot))
+        }
+      })
+      Cache.sharedCache.setObject(true, forKey: "firstLaunch")
+    }
+    
     return true
+  }
+  
+  private func isLoadedLocations() -> Bool {
+    let firstLaunch = Cache.sharedCache.getObject(forKey: "firstLaunch") as? Bool
+    return firstLaunch == nil ? false : true
   }
   
   func applicationWillResignActive(application: UIApplication) {

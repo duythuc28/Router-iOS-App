@@ -12,7 +12,7 @@ class CPXDetailLocationViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
   
-  private var defaultLocations = ["Tranning Room", "Bedroom", "Downstairs", "Family Room", "Hallway", "Office", "room of Requirement", "Situation Room", "Upstairs", "Custom"]
+  private var defaultLocations = [String]()
   
   var didChooseLocation:((location: String) -> Void)?
   
@@ -33,6 +33,19 @@ class CPXDetailLocationViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "Location"
+    let locations = realmDB.objects(Location.self).sorted("createdAt").reverse()
+    for lot in locations {
+      defaultLocations.append(lot.name)
+    }
+    
+    if let index = defaultLocations.indexOf(selectedLocation) {
+      selectedIndexPath = index
+    }
+    else {
+      selectedIndexPath = -1
+    }
+    
+    defaultLocations.append("Custom")
   }
   
   //MARK: - Prepare segue
@@ -41,6 +54,10 @@ class CPXDetailLocationViewController: UIViewController {
       if let addNewLocation = segue.destinationViewController as? CPXDetailAddNewLocationViewController {
         addNewLocation.didAddLocation = {
           (newLocation) in
+          let new = Location(locationName: newLocation)
+          try! realmDB.write({
+            realmDB.add(new)
+          })
           self.defaultLocations.insert(newLocation, atIndex: 0)
           self.selectedIndexPath = 0
           self.tableView.reloadData()

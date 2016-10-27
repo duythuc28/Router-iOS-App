@@ -19,9 +19,14 @@ class CPXDetailAddNewLocationViewController: UIViewController {
   }
 
   @IBAction func addNewLocation(sender: AnyObject) {
+    view.endEditing(true)
     if locationTextField.hasText() && didAddLocation != nil {
         didAddLocation!(name: locationTextField.text!)
     }
     self.navigationController?.popViewControllerAnimated(true)
+  }
+  
+  override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    view.endEditing(true)
   }
 }
