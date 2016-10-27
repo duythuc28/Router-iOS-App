@@ -18,4 +18,5 @@ class HowToConfigureViewController: UIViewController {
   @IBAction func doneButtonClicked(sender: AnyObject) {
     self.dismissViewControllerAnimated(true, completion: nil)
   }
+    
 }
