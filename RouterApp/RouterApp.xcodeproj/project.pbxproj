@@ -34,6 +34,9 @@
 		5AA929361DBE6AA200935BF4 /* SimplePingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA929341DBE6AA200935BF4 /* SimplePingHelper.m */; };
 		5AA929381DBE824000935BF4 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA929371DBE824000935BF4 /* UIViewController.swift */; };
 		5AA9293A1DBE854D00935BF4 /* CPXDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA929391DBE854D00935BF4 /* CPXDevice.swift */; };
+		6A571D351DC28465004C5F19 /* CPXConfigureDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A571D341DC28465004C5F19 /* CPXConfigureDetailViewController.swift */; };
+		6A571D371DC289AF004C5F19 /* CPXConfiguringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A571D361DC289AF004C5F19 /* CPXConfiguringViewController.swift */; };
+		6A571D391DC289CB004C5F19 /* CPXConfigureSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A571D381DC289CB004C5F19 /* CPXConfigureSuccessViewController.swift */; };
 		6A7D9CAB1DB6695800F6D194 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D9C5F1DB6695800F6D194 /* BaseViewController.swift */; };
 		6A7D9CAC1DB6695800F6D194 /* NSString+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D9C601DB6695800F6D194 /* NSString+Custom.swift */; };
 		6A7D9CAD1DB6695800F6D194 /* RealmExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D9C611DB6695800F6D194 /* RealmExtension.swift */; };
@@ -117,6 +120,9 @@
 		5AA929341DBE6AA200935BF4 /* SimplePingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePingHelper.m; sourceTree = "<group>"; };
 		5AA929371DBE824000935BF4 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		5AA929391DBE854D00935BF4 /* CPXDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPXDevice.swift; sourceTree = "<group>"; };
+		6A571D341DC28465004C5F19 /* CPXConfigureDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPXConfigureDetailViewController.swift; sourceTree = "<group>"; };
+		6A571D361DC289AF004C5F19 /* CPXConfiguringViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPXConfiguringViewController.swift; sourceTree = "<group>"; };
+		6A571D381DC289CB004C5F19 /* CPXConfigureSuccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPXConfigureSuccessViewController.swift; sourceTree = "<group>"; };
 		6A7D9C5F1DB6695800F6D194 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		6A7D9C601DB6695800F6D194 /* NSString+Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSString+Custom.swift"; sourceTree = "<group>"; };
 		6A7D9C611DB6695800F6D194 /* RealmExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmExtension.swift; sourceTree = "<group>"; };
@@ -218,6 +224,17 @@
 				5AA929261DBE6A4C00935BF4 /* route.h */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		6A571D331DC28448004C5F19 /* CPXConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				5A0E58BA1DBFD6330080ADF5 /* CPXDetailConfigurateViewController.swift */,
+				6A571D341DC28465004C5F19 /* CPXConfigureDetailViewController.swift */,
+				6A571D361DC289AF004C5F19 /* CPXConfiguringViewController.swift */,
+				6A571D381DC289CB004C5F19 /* CPXConfigureSuccessViewController.swift */,
+			);
+			name = CPXConfiguration;
 			sourceTree = "<group>";
 		};
 		6A7D9C481DB667F600F6D194 /* Shared */ = {
@@ -383,6 +400,7 @@
 		6A7D9CE71DB66B7800F6D194 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6A571D331DC28448004C5F19 /* CPXConfiguration */,
 				5AA9291F1DBE69A100935BF4 /* HomeViewController.swift */,
 				5A0E58AC1DBFA01C0080ADF5 /* HowToConfigureViewController.swift */,
 				5A0E58AE1DBFA60F0080ADF5 /* CPXDetailViewController.swift */,
@@ -390,7 +408,6 @@
 				5A0E58B21DBFBEF50080ADF5 /* CPXDetailAddNewLocationViewController.swift */,
 				5A0E58B41DBFC5660080ADF5 /* CPXDetailListClientsViewController.swift */,
 				5A0E58B81DBFCC830080ADF5 /* CPXDetailAdvancedViewController.swift */,
-				5A0E58BA1DBFD6330080ADF5 /* CPXDetailConfigurateViewController.swift */,
 				5A0E58BC1DBFD6480080ADF5 /* CPXDetailOptimizeViewController.swift */,
 			);
 			path = Controllers;
@@ -576,6 +593,7 @@
 				6A7D9CD01DB6695800F6D194 /* NetworkingUtil.swift in Sources */,
 				6A7D9CDD1DB6695800F6D194 /* User.swift in Sources */,
 				5A0E58B91DBFCC830080ADF5 /* CPXDetailAdvancedViewController.swift in Sources */,
+				6A571D371DC289AF004C5F19 /* CPXConfiguringViewController.swift in Sources */,
 				5AA929301DBE6A8600935BF4 /* Utils.m in Sources */,
 				8B5E2FF31DB4F9A900981A75 /* AppDelegate.swift in Sources */,
 				6A7D9CB11DB6695800F6D194 /* UIAlertController+Custom.swift in Sources */,
@@ -601,11 +619,13 @@
 				6A7D9CB61DB6695800F6D194 /* UIImage+Custom.swift in Sources */,
 				6A7D9CB31DB6695800F6D194 /* UIButton+Custom.swift in Sources */,
 				5A7B95C61DC23359000A8340 /* Cache.swift in Sources */,
+				6A571D351DC28465004C5F19 /* CPXConfigureDetailViewController.swift in Sources */,
 				5A73E3331DC1113600FF56E6 /* RESTResponse.swift in Sources */,
 				5A73E3311DC1113600FF56E6 /* RESTParam.swift in Sources */,
 				6A7D9CB21DB6695800F6D194 /* UIApplicationExtension.swift in Sources */,
 				6A7D9CDB1DB6695800F6D194 /* Parenting.swift in Sources */,
 				5A0E58AB1DBF86D10080ADF5 /* HomeTableViewCell.swift in Sources */,
+				6A571D391DC289CB004C5F19 /* CPXConfigureSuccessViewController.swift in Sources */,
 				6A7D9CB71DB6695800F6D194 /* UIImageView+Custom.swift in Sources */,
 				6A7D9CBC1DB6695800F6D194 /* UIView+Custom.swift in Sources */,
 				6A7D9CCB1DB6695800F6D194 /* UIView+Animation.swift in Sources */,
