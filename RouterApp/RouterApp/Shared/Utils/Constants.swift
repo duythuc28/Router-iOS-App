@@ -37,8 +37,11 @@ class Constants: NSObject {
     static let showOptimizeSegueIdentifier        = "showOptimizeSegueIdentifier"
     static let showAddNewLocationSegueIdentifier  = "showAddNewLocationSegueIdentifier"
   }
-  
-  
+}
+
+struct UserDefaultKey {
+  static let ipAddress = "ipAddress"
+  static let token = "token"
 }
 
 

@@ -15,15 +15,14 @@ class HomeTableViewCell: UITableViewCell {
   var device: CPXDevice! {
     didSet {
       nameLabel.text = device.name
-      if device.configured {
+      let status = device.status ? "Online: \(device.quality)%" : "Error"
+      let backgroundColor = device.status ? UIColor.greenColor() : UIColor.redColor()
+      statusView.backgroundColor = backgroundColor
+      statusLabel.text = status
+      
+      if !device.configured {
         statusView.backgroundColor = UIColor.grayColor()
         statusLabel.text = "Disconnected"
-      }
-      else {
-        let status = device.status ? device.quality : "Error"
-        let backgroundColor = device.status ? UIColor.greenColor() : UIColor.redColor()
-        statusView.backgroundColor = backgroundColor
-        statusLabel.text = status
       }
     }
   }

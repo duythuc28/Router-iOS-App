@@ -17,5 +17,22 @@ class CPXDetailAdvancedViewController: UITableViewController {
     title = "Advanced"
   }
   
+  @IBAction func rebootCPX(sender: AnyObject) {
+    APIManager.rebootCPX { (result, error) in
+      if result != nil {
+        self.showAlert(withMessage: "Reboot successfully!")
+        /*
+         error = "<null>";
+         id = "<null>";
+         result = 0;
+         */
+      }
+      else {
+        self.showAlert(withMessage: "Have something wrong, please try again!")
+      }
+    }
+  }
+  
+  
 
 }

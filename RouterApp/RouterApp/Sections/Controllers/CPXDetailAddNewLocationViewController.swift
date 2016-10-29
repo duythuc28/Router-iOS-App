@@ -16,6 +16,7 @@ class CPXDetailAddNewLocationViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "Custom Location"
+    self.locationTextField.delegate = self
   }
 
   @IBAction func addNewLocation(sender: AnyObject) {
@@ -28,5 +29,12 @@ class CPXDetailAddNewLocationViewController: UIViewController {
   
   override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
     view.endEditing(true)
+  }
+
+}
+extension CPXDetailAddNewLocationViewController: UITextFieldDelegate {
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    return true
   }
 }

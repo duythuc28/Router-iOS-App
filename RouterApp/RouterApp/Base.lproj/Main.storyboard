@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fwa-Lb-ShL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fwa-Lb-ShL">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -97,7 +97,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="92" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ANr-Pe-yJ2">
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="92" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ANr-Pe-yJ2">
                                 <rect key="frame" x="20" y="155" width="560" height="425"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -164,15 +164,23 @@
                                     <constraint firstAttribute="width" secondItem="fES-NM-AAW" secondAttribute="height" multiplier="1:1" id="k4A-8F-12A"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Can not found, please scan again." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YmI-be-3wF">
+                                <rect key="frame" x="229.5" y="280" width="141" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="GyY-bR-zm2" firstAttribute="centerX" secondItem="DqC-tW-Nha" secondAttribute="centerX" id="0Mq-22-wKw"/>
                             <constraint firstAttribute="trailing" secondItem="ANr-Pe-yJ2" secondAttribute="trailing" constant="20" id="AXF-Cs-DZm"/>
                             <constraint firstItem="GyY-bR-zm2" firstAttribute="leading" secondItem="fES-NM-AAW" secondAttribute="trailing" constant="31" id="CHs-he-wuR"/>
+                            <constraint firstItem="YmI-be-3wF" firstAttribute="centerY" secondItem="DqC-tW-Nha" secondAttribute="centerY" id="JAw-ug-TeD"/>
                             <constraint firstItem="lCb-q7-e3I" firstAttribute="top" secondItem="ANr-Pe-yJ2" secondAttribute="bottom" constant="20" id="LLR-1Y-nkP"/>
                             <constraint firstItem="ANr-Pe-yJ2" firstAttribute="leading" secondItem="DqC-tW-Nha" secondAttribute="leading" constant="20" id="X42-gI-lpA"/>
                             <constraint firstItem="fES-NM-AAW" firstAttribute="centerY" secondItem="GyY-bR-zm2" secondAttribute="centerY" id="ZUS-w5-b2a"/>
+                            <constraint firstItem="YmI-be-3wF" firstAttribute="centerX" secondItem="DqC-tW-Nha" secondAttribute="centerX" id="cZV-4x-ZCr"/>
                             <constraint firstItem="GyY-bR-zm2" firstAttribute="top" secondItem="oX4-X6-Pvg" secondAttribute="bottom" constant="40" id="fcq-31-S0c"/>
                             <constraint firstItem="ANr-Pe-yJ2" firstAttribute="top" secondItem="GyY-bR-zm2" secondAttribute="bottom" constant="30" id="iEV-vI-ojy"/>
                         </constraints>
@@ -193,6 +201,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="currentSSID" destination="GyY-bR-zm2" id="CQ0-Fd-D6l"/>
+                        <outlet property="notFoundLabel" destination="YmI-be-3wF" id="fTG-Bb-O2R"/>
                         <outlet property="tableView" destination="ANr-Pe-yJ2" id="CEU-sD-aYa"/>
                         <segue destination="DCh-cN-oKz" kind="show" identifier="showCPXDetailSegueIdentifier" id="kWK-VA-ofg"/>
                     </connections>
@@ -365,11 +374,19 @@
                                     <outlet property="delegate" destination="bsU-Mr-kQS" id="Upo-0G-Fo9"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No client is connected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nlf-m9-lU1">
+                                <rect key="frame" x="215" y="290" width="170.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Nlf-m9-lU1" firstAttribute="centerX" secondItem="ZHS-Za-2HB" secondAttribute="centerX" id="0VN-69-Ey1"/>
                             <constraint firstItem="dkk-a2-llV" firstAttribute="top" secondItem="Hby-3y-58e" secondAttribute="bottom" id="CRq-cU-0OZ"/>
                             <constraint firstItem="Hby-3y-58e" firstAttribute="top" secondItem="ZHS-Za-2HB" secondAttribute="topMargin" id="Llj-JS-f1a"/>
+                            <constraint firstItem="Nlf-m9-lU1" firstAttribute="centerY" secondItem="ZHS-Za-2HB" secondAttribute="centerY" id="XoF-wD-6BW"/>
                             <constraint firstItem="Hby-3y-58e" firstAttribute="leading" secondItem="ZHS-Za-2HB" secondAttribute="leading" id="fhO-aC-RjR"/>
                             <constraint firstAttribute="trailing" secondItem="Hby-3y-58e" secondAttribute="trailing" id="fkc-jV-2KO"/>
                         </constraints>
@@ -383,6 +400,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="noClientLabel" destination="Nlf-m9-lU1" id="qFv-Tm-ZI0"/>
                         <outlet property="tableView" destination="Hby-3y-58e" id="0pO-qK-5kH"/>
                     </connections>
                 </viewController>
@@ -744,6 +762,9 @@
                                                     <state key="normal" title="Reboot">
                                                         <color key="titleColor" red="0.0" green="0.73725490196078436" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="rebootCPX:" destination="sg0-5H-M3a" eventType="touchUpInside" id="1ZS-Bo-GcY"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reboot the operating  system on your device" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Asa-eI-pMI">
                                                     <rect key="frame" x="10" y="42" width="580" height="21"/>

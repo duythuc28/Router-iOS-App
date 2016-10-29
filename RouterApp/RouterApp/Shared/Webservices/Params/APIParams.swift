@@ -11,9 +11,9 @@ import ObjectMapper
 
 class APIParams: RESTParam {
   var method: String = ""
-  var params: [String] = []
+  var params: [AnyObject] = []
   
-  convenience init(method mtd: String, params parameters: [String]) {
+  convenience init(method mtd: String, params parameters: [AnyObject]) {
     self.init()
     self.method = mtd
     self.params = parameters

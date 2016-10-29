@@ -28,7 +28,7 @@ class CPXDetailLocationViewController: UIViewController {
   }
   
   var selectedIndexPath: Int = -1
-  
+  var deviceName: String = ""
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -41,10 +41,14 @@ class CPXDetailLocationViewController: UIViewController {
     if let index = defaultLocations.indexOf(selectedLocation) {
       selectedIndexPath = index
     }
-    else {
-      selectedIndexPath = -1
+    else { // not found, add new db
+      let new = Location(locationName: selectedLocation)
+      try! realmDB.write({
+        realmDB.add(new)
+      })
+      selectedIndexPath = defaultLocations.count
+      defaultLocations.insert(selectedLocation, atIndex: 0)
     }
-    
     defaultLocations.append("Custom")
   }
   
@@ -61,10 +65,25 @@ class CPXDetailLocationViewController: UIViewController {
           self.defaultLocations.insert(newLocation, atIndex: 0)
           self.selectedIndexPath = 0
           self.tableView.reloadData()
-          if self.didChooseLocation != nil {
-            self.didChooseLocation!(location: newLocation)
-          }
+          self.updateCPXInfo()
         }
+      }
+    }
+  }
+  
+  private func updateCPXInfo() {
+    selectedLocation = defaultLocations[selectedIndexPath]
+    self.startAnimating()
+    APIManager.updateCPXInfo(withName: deviceName, location: selectedLocation) { (result, error) in
+      self.stopAnimating()
+      if result != nil {
+        print(result)
+        if self.didChooseLocation != nil {
+          self.didChooseLocation!(location: self.selectedLocation)
+        }
+      }
+      else {
+        self.showAlert(withMessage: "Have something wrong, please try again!")
       }
     }
   }
@@ -104,8 +123,7 @@ extension CPXDetailLocationViewController: UITableViewDataSource, UITableViewDel
     let cell = tableView.cellForRowAtIndexPath(indexPath)
     cell?.accessoryType = .Checkmark
     selectedIndexPath = indexPath.row
-    if didChooseLocation != nil {
-      didChooseLocation!(location: defaultLocations[selectedIndexPath])
-    }
+    // Update cpx info
+    updateCPXInfo()
   }
 }

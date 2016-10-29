@@ -36,5 +36,6 @@ class RESTContants: NSObject {
   static let WebserviceResourceUrl              = ""
   static let kAuthenticate = "/cgi-bin/luci/rpc/auth"
   static let kGetCPXDetail = "/cgi-bin/luci/rpc/mesh?auth="
-
+  static let kSetCPXInfo = "/cgi-bin/luci/rpc/mesh?auth="
+  static let kRebootCPX = "/cgi-bin/luci/rpc/sys?auth="
 }

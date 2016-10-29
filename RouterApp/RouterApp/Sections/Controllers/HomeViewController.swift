@@ -10,12 +10,19 @@ import UIKit
 
 class HomeViewController: UIViewController {
   
+  @IBOutlet weak var notFoundLabel: UILabel!
   @IBOutlet weak var currentSSID: UILabel!
   @IBOutlet weak var tableView: UITableView!
   private var scanLAN: ScanLAN?
   private var connectedDevices = [CPXDevice]() {
     didSet {
-      tableView.reloadData()
+      if connectedDevices.count > 0 {
+        tableView.hidden = false
+        tableView.reloadData()
+      }
+      else {
+        tableView.hidden = true
+      }
     }
   }
   
@@ -36,6 +43,8 @@ class HomeViewController: UIViewController {
   }
   
   private func startScanning() {
+    tableView.hidden = true
+    notFoundLabel.hidden = true
     startLoadingIndicator()
     if scanLAN == nil {
       scanLAN = ScanLAN.init(delegate: self)
@@ -74,7 +83,10 @@ class HomeViewController: UIViewController {
       if let detailVC = segue.destinationViewController as? CPXDetailViewController {
         title = "Home"
         let device = sender as! CPXDevice
-        detailVC.device = device
+        detailVC.device = device        
+        // When CPX selected, save request cpx ip address
+        Cache.sharedCache.setObject(device.ipAddress, forKey: UserDefaultKey.ipAddress)
+        Cache.sharedCache.setObject(device.token, forKey: UserDefaultKey.token)
       }
     }
   }
@@ -99,7 +111,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let device = connectedDevices[indexPath.row]
-    if !device.status {
+    if !device.status || !device.configured {
       didSelectErrorDevice(device)
     }
     else {
@@ -113,26 +125,42 @@ extension HomeViewController: ScanLANDelegate {
     // TODO: hard code for device contains prefix MAC Address 04:F0:21:1A:04:88
     if macAddress != nil {
       if macAddress.containsString("04:F0") {
-        // Authenticate router
-        APIManager.authenticateRouter(withIP: address, completion: { (result, error) in
-          if result != nil {
-            // Call API to get CPX detail
-            APIManager.getCPXDetail(withIP: address, token: result!, completion: { (token, error) in
-              print(result)
-            })
-          }
-        })
-        
-        
         let device = CPXDevice(name: hostName, ip: address, mac: macAddress)
         connectedDevices.append(device)
+        // Authenticate router
+        APIManager.authenticateRouter(withIP: address, completion: { (token, error) in
+          if token != nil {
+            // Call API to get CPX detail
+            // Save token for cpx
+            device.token = token!
+            APIManager.getCPXDetail(withIP: address, token: token!, completion: { (result, error) in
+              if result != nil {
+                device.updateInfo(result)
+                self.tableView.reloadData()
+              }
+              else {
+                self.showAlert(withMessage: "Have something wrong, please try again!")
+              }
+            })
+          }
+          else {
+            self.showAlert(withMessage: "Have something wrong, please try again!")
+          }
+        })
       }
     }
   }
   
   func scanLANDidFinishScanning() {
     stopLoadingIndicator()
-    print("Scan completely")
+    if connectedDevices.count > 0 {
+      tableView.hidden = false
+      notFoundLabel.hidden = true
+    }
+    else {
+      tableView.hidden = true
+      notFoundLabel.hidden = false
+    }
   }
   
 }

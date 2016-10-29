@@ -29,7 +29,7 @@ class CPXDetailViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.locationLabel.text = device.location
-    self.qualityLabel.text = device.quality
+    self.qualityLabel.text = "Online: \(device.quality)%"
   }
   
   //MARK: - Prepare segue
@@ -39,6 +39,7 @@ class CPXDetailViewController: UITableViewController {
       case Constants.SegueIdentifer.showListLocationsSegueIdentifier:
         if let locationVC = segue.destinationViewController as? CPXDetailLocationViewController {
           locationVC.selectedLocation = device.location
+          locationVC.deviceName = device.name
           locationVC.didChooseLocation = {
             (location) in
             self.locationLabel.text = location
@@ -48,6 +49,7 @@ class CPXDetailViewController: UITableViewController {
       case Constants.SegueIdentifer.showListClientsSegueIdentifier:
         if let clientVC = segue.destinationViewController as?  CPXDetailListClientsViewController {
           clientVC.clients = device.clients
+          clientVC.device = device
         }
       case Constants.SegueIdentifer.showAdvanceSegueIdentifier:
         if let advanced = segue.destinationViewController as? CPXDetailAdvancedViewController {
@@ -63,7 +65,7 @@ class CPXDetailViewController: UITableViewController {
   //MARK: - TableViewDataSource & UITableViewDelegate
   
   override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    if device.configured && indexPath.row == 4 {
+    if device.hasConfigInfo && indexPath.row == 4 {
       return 0
     }
     if indexPath.row < 2 {

@@ -34,17 +34,28 @@ extension UIViewController: NVActivityIndicatorViewable {
     
     return controller
   }
-    
-    /**
-     Display loading indicator
-     */
-    func startLoadingIndicator() {
-        startAnimating(loadingIndicatorSize, message: "", type: .BallSpinFadeLoader , color: UIColor.whiteColor(), padding: 0, displayTimeThreshold: 0, minimumDisplayTime: 0)
+  
+  /**
+   Display loading indicator
+   */
+  func startLoadingIndicator() {
+    startAnimating(loadingIndicatorSize, message: "", type: .BallSpinFadeLoader , color: UIColor.whiteColor(), padding: 0, displayTimeThreshold: 0, minimumDisplayTime: 0)
+  }
+  /**
+   Hide loading indicator
+   */
+  func stopLoadingIndicator() {
+    stopAnimating()
+  }
+  
+  func showAlert(withMessage message: String) {
+    let alertView = UIAlertController(title: "Home Mesh", message: message, preferredStyle: .Alert)
+    let okAction = UIAlertAction(title: "OK", style: .Default) { (ok) in
+      self.dismissViewControllerAnimated(true, completion: nil)
     }
-    /**
-     Hide loading indicator
-     */
-    func stopLoadingIndicator() {
-        stopAnimating()
-    }
+    alertView.addAction(okAction)
+    presentViewController(alertView, animated: true, completion: nil)
+  }
+  
+  
 }

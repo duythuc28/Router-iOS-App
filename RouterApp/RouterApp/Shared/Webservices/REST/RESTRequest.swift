@@ -85,7 +85,7 @@ class RESTRequest: NSObject {
   //MARK: Alamofire functions
   func baseInvoker(completion: RestAPICompletion) {
     DLRequestManager.sharedManager.getManager().request(self.requestMethod, self.baseUrl, parameters: self.parameters, encoding: self.endcoding, headers: self.headers).responseJSON { (response) -> Void in
-      self.handleResponse(response, completion: completion)
+      self.handleHeaderResponse(response, completion: completion)
     }
   }
   
