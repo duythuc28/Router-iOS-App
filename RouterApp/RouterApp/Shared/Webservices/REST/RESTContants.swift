@@ -38,4 +38,6 @@ class RESTContants: NSObject {
   static let kGetCPXDetail = "/cgi-bin/luci/rpc/mesh?auth="
   static let kSetCPXInfo = "/cgi-bin/luci/rpc/mesh?auth="
   static let kRebootCPX = "/cgi-bin/luci/rpc/sys?auth="
+  static let kGetWifiNetworks = "/cgi-bin/luci/rpc/mesh?auth="
+  static let kConfigureCPX = "/cgi-bin/luci/rpc/mesh?auth="
 }

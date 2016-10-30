@@ -33,6 +33,7 @@ class HomeViewController: UIViewController {
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
+    self.navigationController?.setNavigationBarHidden(false, animated: false)
     title = "Home Mesh"
     startScanning()
   }
@@ -139,12 +140,12 @@ extension HomeViewController: ScanLANDelegate {
                 self.tableView.reloadData()
               }
               else {
-                self.showAlert(withMessage: "Have something wrong, please try again!")
+//                self.showAlert(withMessage: "Have something wrong, please try again!")
               }
             })
           }
           else {
-            self.showAlert(withMessage: "Have something wrong, please try again!")
+//            self.showAlert(withMessage: "Have something wrong, please try again!")
           }
         })
       }

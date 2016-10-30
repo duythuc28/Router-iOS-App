@@ -9,17 +9,18 @@
 import UIKit
 
 class CPXConfigureSuccessViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+  }
+  
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    self.navigationController?.setNavigationBarHidden(true, animated: false)
+  }
+  
+  @IBAction func finishConfig(sender: AnyObject) {
+    self.navigationController?.popToRootViewControllerAnimated(true)
+  }
+  
 }

@@ -50,7 +50,7 @@ extension UIViewController: NVActivityIndicatorViewable {
   
   func showAlert(withMessage message: String) {
     let alertView = UIAlertController(title: "Home Mesh", message: message, preferredStyle: .Alert)
-    let okAction = UIAlertAction(title: "OK", style: .Default) { (ok) in
+    let okAction = UIAlertAction(title: "Close", style: .Default) { (ok) in
       self.dismissViewControllerAnimated(true, completion: nil)
     }
     alertView.addAction(okAction)

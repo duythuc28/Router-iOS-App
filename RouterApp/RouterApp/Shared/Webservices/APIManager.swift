@@ -8,6 +8,8 @@
 
 import Foundation
 import Alamofire
+import RealmSwift
+import ObjectMapper
 
 class APIManager: NSObject {
   
@@ -45,14 +47,9 @@ class APIManager: NSObject {
   }
   
   static func updateCPXInfo(withName name: String, location: String, completion:((result: AnyObject?, error: RESTError?) -> Void)) {
-    guard let ipAddress = Cache.sharedCache.getObject(forKey: UserDefaultKey.ipAddress) as? String else {
-      return
-    }
-    guard let token = Cache.sharedCache.getObject(forKey: UserDefaultKey.token) as? String else {
-      return
-    }
+    let info = getAddressAndToken()
     
-    let path = String(format: "http://%@%@%@", ipAddress, RESTContants.kSetCPXInfo, token)
+    let path = String(format: "http://%@%@%@", info.ip, RESTContants.kSetCPXInfo, info.token)
     let request = RESTRequest(url: path, functionName: "", method: .POST, endcoding: .JSON)
     var paramDict = [String: String]()
     paramDict["name"] = name
@@ -70,14 +67,8 @@ class APIManager: NSObject {
   }
   
   static func rebootCPX(completion:((result: AnyObject?, error: RESTError?) -> Void)) {
-    guard let ipAddress = Cache.sharedCache.getObject(forKey: UserDefaultKey.ipAddress) as? String else {
-      return
-    }
-    guard let token = Cache.sharedCache.getObject(forKey: UserDefaultKey.token) as? String else {
-      return
-    }
-    
-    let path = String(format: "http://%@%@%@", ipAddress, RESTContants.kRebootCPX, token)
+    let info = getAddressAndToken()
+    let path = String(format: "http://%@%@%@", info.ip, RESTContants.kRebootCPX, info.token)
     let request = RESTRequest(url: path, functionName: "", method: .POST, endcoding: .JSON)
     let params = APIParams(method: "reboot", params: [])
     request.setQueryParam(params)
@@ -89,6 +80,58 @@ class APIManager: NSObject {
         completion(result: nil, error: error)
       }
     }
+  }
+  
+  static func scanWifiNetworks(completion:(result: List<WifiInfo>?, error: RESTError?) -> Void) {
+    let info = getAddressAndToken()
+    let path = String(format: "http://%@%@%@", info.ip, RESTContants.kGetWifiNetworks, info.token)
+    let request = RESTRequest(url: path, functionName: "", method: .POST, endcoding: .JSON)
+    let params = APIParams(method: "get_scanlist", params: [])
+    request.setQueryParam(params)
+    request.baseInvokerWithHeaderResponse { (result, error) in
+      if result != nil {
+        if let result = Mapper<ScanListResponse>().map(result) {
+            completion(result: result.wifis, error: nil)
+        }
+      }
+      else {
+        completion(result: nil, error: error)
+      }
+    }
+  }
+  
+  static func configureCPX(wifiInfo wifi: WifiInfo, completion:((result: AnyObject?, error: RESTError?) -> Void)) {
+    let info = getAddressAndToken()
+    
+    let path = String(format: "http://%@%@%@", info.ip, RESTContants.kSetCPXInfo, info.token)
+    let request = RESTRequest(url: path, functionName: "", method: .POST, endcoding: .JSON)
+    var paramDict = [String: String]()
+    paramDict["home_ssid"] = wifi.ssid
+    paramDict["mesh_ssid"] = "Home_mesh"
+    paramDict["encryption"] = wifi.encryptionType
+    paramDict["password"] = wifi.password
+    
+    let params = APIParams(method: "config", params: [paramDict])
+    request.setQueryParam(params)
+    request.baseInvokerWithHeaderResponse { (result, error) in
+      if result != nil {
+        completion(result: result, error: nil)
+      }
+      else {
+        completion(result: nil, error: error)
+      }
+    }
+  }
+
+  static private func getAddressAndToken() -> (ip: String, token: String) {
+    guard let ipAddress = Cache.sharedCache.getObject(forKey: UserDefaultKey.ipAddress) as? String else {
+      return ("", "")
+    }
+    guard let token = Cache.sharedCache.getObject(forKey: UserDefaultKey.token) as? String else {
+      return ("", "")
+    }
+    
+    return (ipAddress, token)
   }
   
 

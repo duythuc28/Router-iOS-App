@@ -9,25 +9,22 @@
 import UIKit
 
 class CPXConfiguringViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  var wifiInfo: WifiInfo!
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    configureRouter()
+  }
+  
+  private func configureRouter() {
+    APIManager.configureCPX(wifiInfo: wifiInfo) { (result, error) in
+      if result != nil {
+        self.performSegueWithIdentifier("showConfigureSuccess", sender: nil)
+      }
+      else {
+        self.showAlert(withMessage: "Have something wrong, please try again!")
+      }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+  }
+  
 }
