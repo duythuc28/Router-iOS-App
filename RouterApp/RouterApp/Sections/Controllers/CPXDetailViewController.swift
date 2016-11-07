@@ -22,7 +22,7 @@ class CPXDetailViewController: UITableViewController {
   
   var device: CPXDevice! {
     didSet {
-      self.title = device.name
+      self.title = device.location
     }
   }
   
@@ -39,7 +39,7 @@ class CPXDetailViewController: UITableViewController {
       case Constants.SegueIdentifer.showListLocationsSegueIdentifier:
         if let locationVC = segue.destinationViewController as? CPXDetailLocationViewController {
           locationVC.selectedLocation = device.location
-          locationVC.deviceName = device.name
+          locationVC.deviceName = device.location
           locationVC.didChooseLocation = {
             (location) in
             self.locationLabel.text = location

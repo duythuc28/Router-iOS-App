@@ -20,12 +20,13 @@ class CPXDetailAdvancedViewController: UITableViewController {
   @IBAction func rebootCPX(sender: AnyObject) {
     APIManager.rebootCPX { (result, error) in
       if result != nil {
-        self.showAlert(withMessage: "Reboot successfully!")
+        self.showAlert(withMessage: "Reboot successfully!", isPopRootView: true)
         /*
          error = "<null>";
          id = "<null>";
          result = 0;
          */
+        
       }
       else {
         self.showAlert(withMessage: "Have something wrong, please try again!")

@@ -46,7 +46,8 @@ class HomeViewController: UIViewController {
   private func startScanning() {
     tableView.hidden = true
     notFoundLabel.hidden = true
-    startLoadingIndicator()
+//    startLoadingIndicator()
+    UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     if scanLAN == nil {
       scanLAN = ScanLAN.init(delegate: self)
       connectedDevices.removeAll()
@@ -112,10 +113,10 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let device = connectedDevices[indexPath.row]
-    if !device.status || !device.configured {
+    if !device.configured { // unconfig device (not authenticate) -> show error pop up
       didSelectErrorDevice(device)
     }
-    else {
+    else { // red or green status, show detail device
       self.performSegueWithIdentifier(Constants.SegueIdentifer.showCPXDetailSegueIdentifier, sender: device)
     }
   }
@@ -153,7 +154,8 @@ extension HomeViewController: ScanLANDelegate {
   }
   
   func scanLANDidFinishScanning() {
-    stopLoadingIndicator()
+//    stopLoadingIndicator()
+    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
     if connectedDevices.count > 0 {
       tableView.hidden = false
       notFoundLabel.hidden = true

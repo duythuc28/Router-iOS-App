@@ -14,7 +14,7 @@ class HomeTableViewCell: UITableViewCell {
   @IBOutlet weak var statusView: UIView!
   var device: CPXDevice! {
     didSet {
-      nameLabel.text = device.name
+      nameLabel.text = device.location
       let status = device.status ? "Online: \(device.quality)%" : "Error"
       let backgroundColor = device.status ? UIColor.greenColor() : UIColor.redColor()
       statusView.backgroundColor = backgroundColor
@@ -23,6 +23,7 @@ class HomeTableViewCell: UITableViewCell {
       if !device.configured {
         statusView.backgroundColor = UIColor.grayColor()
         statusLabel.text = "Disconnected"
+        nameLabel.text = "New CPX device"
       }
     }
   }

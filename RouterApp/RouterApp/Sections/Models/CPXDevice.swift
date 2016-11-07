@@ -37,7 +37,7 @@ class CPXDevice: NSObject {
     guard let respsonse = result["result"] as? [String: AnyObject] else {
       return
     }
-    self.configured = true // get cpx info -> set config == true
+    self.configured = true // get cpx info successfully -> set config == true
     if let status = respsonse["is_up"] as? Int {
       self.status = status > 0 ? true : false
     }

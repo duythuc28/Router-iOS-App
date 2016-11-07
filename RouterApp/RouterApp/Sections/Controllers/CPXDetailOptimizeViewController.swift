@@ -29,7 +29,7 @@ class CPXDetailOptimizeViewController: UIViewController {
       self.optimizeButton.hidden = false
       self.optimizingView.hidden = true
       if result != nil {
-        self.showAlert(withMessage: "Optimize successfully")
+        self.showAlert(withMessage: "Optimize successfully", isPopRootView: true)
       }
       else {
         self.showAlert(withMessage: "Have something wrong, please try again!")
