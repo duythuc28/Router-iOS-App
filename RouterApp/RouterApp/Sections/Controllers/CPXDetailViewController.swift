@@ -55,6 +55,10 @@ class CPXDetailViewController: UITableViewController {
         if let advanced = segue.destinationViewController as? CPXDetailAdvancedViewController {
           advanced.device = self.device
         }
+      case Constants.SegueIdentifer.showConfigureSegueIdentifier:
+        if let config = segue.destinationViewController as? CPXDetailConfigurateViewController {
+          config.device = self.device
+        }
       default:
         break
       }
@@ -65,7 +69,10 @@ class CPXDetailViewController: UITableViewController {
   //MARK: - TableViewDataSource & UITableViewDelegate
   
   override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    if device.hasConfigInfo && indexPath.row == 4 {
+    if device.status && indexPath.row == 4 {
+      return 0
+    }
+    else if !device.status && indexPath.row == 5 {
       return 0
     }
     if indexPath.row < 2 {

@@ -48,12 +48,17 @@ extension UIViewController: NVActivityIndicatorViewable {
     stopAnimating()
   }
   
-  func showAlert(withMessage message: String, isPopRootView: Bool = false) {
+  func showAlert(withMessage message: String, isPopRootView: Bool = false, isPopView: Bool = false) {
     let alertView = UIAlertController(title: "Home Mesh", message: message, preferredStyle: .Alert)
     let okAction = UIAlertAction(title: "Close", style: .Default) { (ok) in
       self.dismissViewControllerAnimated(true, completion: nil)
       if isPopRootView {
         self.navigationController?.popToRootViewControllerAnimated(true)
+        return
+      }
+      if isPopView {
+        self.navigationController?.popViewControllerAnimated(true)
+        return
       }
     }
     alertView.addAction(okAction)

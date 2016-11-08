@@ -27,23 +27,61 @@ class CPXDetailConfigurateViewController: UIViewController {
   }
   let wifiCellIdentifier = "CPXConfigureCell"
   
+  var timmer = NSTimer()
+  var device: CPXDevice!
+
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "Configure"
+    
+//    self.navigationItem.hidesBackButton = true
+//    let backTitle = device.location.length > 12 ? "Back" : device.location
+//    let newBackButton = UIBarButtonItem(title: backTitle, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CPXDetailConfigurateViewController.backView(_:)))
+//    self.navigationItem.leftBarButtonItem = newBackButton;
+  }
+  
+  override func viewWillDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
+    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+  }
+  
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
     scanWifiNetworks()
+    timmer.invalidate()
+    titleLabel.text = "Be patient. We are looking for your home router…"
+    self.timmer = NSTimer.scheduledTimerWithTimeInterval(45, target: self, selector: #selector(CPXDetailConfigurateViewController.getWifiList), userInfo: nil, repeats: false)
   }
   
   private func scanWifiNetworks() {
-    startAnimating()
+//    startAnimating()    
+    UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     APIManager.scanWifiNetworks { (result, error) in
-      self.stopAnimating()
+      UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+//      self.stopAnimating()
+//      if result != nil {
+//        // DO nothing for success
+//      }
+//      else {
+//        self.showAlert(withMessage: "Have something wrong, please try again!")
+//      }
+    }
+  }
+  
+  func getWifiList() {
+//    startAnimating()
+    UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    APIManager.getWifiList({ (result, error) in
+      UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+//      self.stopAnimating()
+      self.titleLabel.text = "No wifi nearby"
       if result != nil {
         self.wifiList = Array(result!)
       }
       else {
         self.showAlert(withMessage: "Have something wrong, please try again!")
       }
-    }
+    })
   }
   
   // MARK: Navigation
@@ -54,6 +92,10 @@ class CPXDetailConfigurateViewController: UIViewController {
       configureDetailViewController.wifiInformation = wifiList![selectedIndexPath.row]
     }
   }
+  
+//  func backView(sender: UIBarButtonItem) {
+//    showAlert(withMessage: "Process will be abord", isPopRootView: false, isPopView: true)
+//  }
   
 }
 

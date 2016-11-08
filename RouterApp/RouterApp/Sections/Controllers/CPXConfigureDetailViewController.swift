@@ -15,7 +15,6 @@ class CPXConfigureDetailViewController: UIViewController {
   @IBOutlet weak var configureButton: UIButton!
   
   var wifiInformation: WifiInfo!
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "Configure"

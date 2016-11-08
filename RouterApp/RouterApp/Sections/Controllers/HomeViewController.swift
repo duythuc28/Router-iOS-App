@@ -36,11 +36,17 @@ class HomeViewController: UIViewController {
     self.navigationController?.setNavigationBarHidden(false, animated: false)
     title = "Home Mesh"
     startScanning()
+    //add data to test
+//    let device = CPXDevice(name: "12", ip: "132.222.222.222", mac: "aa:aa:ee:rr:gg")
+//    device.configured = true
+//    device.location = "123"
+//    connectedDevices.append(device)
   }
   
   override func viewDidDisappear(animated: Bool) {
     super.viewDidDisappear(animated)
     scanLAN = nil
+    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
   }
   
   private func startScanning() {

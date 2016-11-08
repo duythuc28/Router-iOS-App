@@ -82,7 +82,7 @@ class APIManager: NSObject {
     }
   }
   
-  static func scanWifiNetworks(completion:(result: List<WifiInfo>?, error: RESTError?) -> Void) {
+  static func getWifiList(completion:(result: List<WifiInfo>?, error: RESTError?) -> Void) {
     let info = getAddressAndToken()
     let path = String(format: "http://%@%@%@", info.ip, RESTContants.kGetWifiNetworks, info.token)
     let request = RESTRequest(url: path, functionName: "", method: .POST, endcoding: .JSON)
@@ -92,6 +92,24 @@ class APIManager: NSObject {
       if result != nil {
         if let result = Mapper<ScanListResponse>().map(result) {
             completion(result: result.wifis, error: nil)
+        }
+      }
+      else {
+        completion(result: nil, error: error)
+      }
+    }
+  }
+  
+  static func scanWifiNetworks(completion:(result: AnyObject?, error: RESTError?) -> Void) {
+    let info = getAddressAndToken()
+    let path = String(format: "http://%@%@%@", info.ip, RESTContants.kGetWifiNetworks, info.token)
+    let request = RESTRequest(url: path, functionName: "", method: .POST, endcoding: .JSON)
+    let params = APIParams(method: "scan_wifi", params: [])
+    request.setQueryParam(params)
+    request.baseInvokerWithHeaderResponse { (result, error) in
+      if result != nil {
+        if let response = result {
+          completion(result: response, error: nil)
         }
       }
       else {
