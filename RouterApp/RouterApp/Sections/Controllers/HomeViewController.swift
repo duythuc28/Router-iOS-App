@@ -37,35 +37,35 @@ class HomeViewController: UIViewController {
     title = "Home Mesh"
     startScanning()
     //add data to test
-    let device = CPXDevice(name: "12", ip: "132.222.222.222", mac: "aa:aa:ee:rr:gg")
-    device.configured = true
-    device.location = "123"
-    device.configInfo = [
-      "bssid" : "C8:3A:35:04:DA:98",
-      "channel": 6,
-      "encryption" :             [
-        "auth_algs":                 [],
-        "auth_suites": [
-          "PSK"
-        ],
-        "description": "WPA PSK (CCMP)",
-        "enabled": 1,
-        "group_ciphers":               [
-          "CCMP"
-        ],
-        "pair_ciphers":             [
-          "CCMP"
-        ],
-        "wep": 0,
-        "wpa": 1,
-      ],
-      "mode": "Master",
-      "quality": 94,
-      "quality_max": 94,
-      "signal": "-27",
-      "ssid": "BigoLive"
-    ]
-    connectedDevices.append(device)
+//    let device = CPXDevice(name: "12", ip: "132.222.222.222", mac: "aa:aa:ee:rr:gg")
+//    device.configured = true
+//    device.location = "123"
+//    device.configInfo = [
+//      "bssid" : "C8:3A:35:04:DA:98",
+//      "channel": 6,
+//      "encryption" :             [
+//        "auth_algs":                 [],
+//        "auth_suites": [
+//          "PSK"
+//        ],
+//        "description": "WPA PSK (CCMP)",
+//        "enabled": 1,
+//        "group_ciphers":               [
+//          "CCMP"
+//        ],
+//        "pair_ciphers":             [
+//          "CCMP"
+//        ],
+//        "wep": 0,
+//        "wpa": 1,
+//      ],
+//      "mode": "Master",
+//      "quality": 94,
+//      "quality_max": 94,
+//      "signal": "-27",
+//      "ssid": "BigoLive"
+//    ]
+//    connectedDevices.append(device)
   }
   
   override func viewDidDisappear(animated: Bool) {
@@ -180,7 +180,7 @@ extension HomeViewController: ScanLANDelegate {
             APIManager.getCPXDetail(withIP: address, token: token!, completion: { (result, error) in
               if result != nil {
                 device.updateInfo(result)
-                device.status = false
+//                device.status = false
 //                self.tableView.reloadData()
               }
               else {
