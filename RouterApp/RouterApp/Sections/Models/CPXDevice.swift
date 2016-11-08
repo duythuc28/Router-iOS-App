@@ -19,7 +19,7 @@ class CPXDevice: NSObject {
   var quality: Int = 0
   var status: Bool = false
   var configured: Bool = false
-  var hasConfigInfo: Bool = false
+  var configInfo: AnyObject?
   var token: String = ""
   init(name: String, ip: String, mac: String?) {
     self.name = ip
@@ -50,8 +50,8 @@ class CPXDevice: NSObject {
     if let location = respsonse["location"] as? String {
       self.location = location
     }
-    if let config = respsonse["config"] as? [String: AnyObject] where config.count > 0 {
-      self.hasConfigInfo = true
+    if let config = respsonse["config"] where config.count > 0 {
+      self.configInfo = config
     }
     guard let clients = respsonse["clients"] as? [String: AnyObject] where clients.count > 0 else {
       return

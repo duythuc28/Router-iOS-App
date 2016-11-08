@@ -37,10 +37,35 @@ class HomeViewController: UIViewController {
     title = "Home Mesh"
     startScanning()
     //add data to test
-//    let device = CPXDevice(name: "12", ip: "132.222.222.222", mac: "aa:aa:ee:rr:gg")
-//    device.configured = true
-//    device.location = "123"
-//    connectedDevices.append(device)
+    let device = CPXDevice(name: "12", ip: "132.222.222.222", mac: "aa:aa:ee:rr:gg")
+    device.configured = true
+    device.location = "123"
+    device.configInfo = [
+      "bssid" : "C8:3A:35:04:DA:98",
+      "channel": 6,
+      "encryption" :             [
+        "auth_algs":                 [],
+        "auth_suites": [
+          "PSK"
+        ],
+        "description": "WPA PSK (CCMP)",
+        "enabled": 1,
+        "group_ciphers":               [
+          "CCMP"
+        ],
+        "pair_ciphers":             [
+          "CCMP"
+        ],
+        "wep": 0,
+        "wpa": 1,
+      ],
+      "mode": "Master",
+      "quality": 94,
+      "quality_max": 94,
+      "signal": "-27",
+      "ssid": "BigoLive"
+    ]
+    connectedDevices.append(device)
   }
   
   override func viewDidDisappear(animated: Bool) {
@@ -97,6 +122,11 @@ class HomeViewController: UIViewController {
         Cache.sharedCache.setObject(device.token, forKey: UserDefaultKey.token)
       }
     }
+    else if segue.identifier == Constants.SegueIdentifer.showJoinMeshSegueIdentifier {
+      if let joinVC = segue.destinationViewController as? ConfigureForSecondCPX {
+        joinVC.configInfo = sender
+      }
+    }
   }
   
 }
@@ -123,6 +153,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
       didSelectErrorDevice(device)
     }
     else { // red or green status, show detail device
+      // if the previous cpx have config info, just call api to join
+      for (_, obj) in connectedDevices.enumerate() {
+        if let configInfo = obj.configInfo where obj.macAddress != device.macAddress && !device.status  {
+          self.performSegueWithIdentifier(Constants.SegueIdentifer.showJoinMeshSegueIdentifier, sender: configInfo)
+          return
+        }
+      }
       self.performSegueWithIdentifier(Constants.SegueIdentifer.showCPXDetailSegueIdentifier, sender: device)
     }
   }
@@ -134,7 +171,6 @@ extension HomeViewController: ScanLANDelegate {
     if macAddress != nil {
       if macAddress.containsString("04:F0") {
         let device = CPXDevice(name: hostName, ip: address, mac: macAddress)
-        connectedDevices.append(device)
         // Authenticate router
         APIManager.authenticateRouter(withIP: address, completion: { (token, error) in
           if token != nil {
@@ -144,14 +180,18 @@ extension HomeViewController: ScanLANDelegate {
             APIManager.getCPXDetail(withIP: address, token: token!, completion: { (result, error) in
               if result != nil {
                 device.updateInfo(result)
-                self.tableView.reloadData()
+                device.status = false
+//                self.tableView.reloadData()
               }
               else {
 //                self.showAlert(withMessage: "Have something wrong, please try again!")
               }
+              self.connectedDevices.append(device)
             })
           }
           else {
+            self.connectedDevices.append(device) // cannot authentication, return
+            return
 //            self.showAlert(withMessage: "Have something wrong, please try again!")
           }
         })

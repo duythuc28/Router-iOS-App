@@ -10,18 +10,19 @@ import ObjectMapper
 import RealmSwift
 
 class ScanListResponse: Mappable {
-  var wifis = List<WifiInfo>()
-  
+  var wifis = [WifiInfo]()
+  var originalWifi = [AnyObject]()
   convenience required init?(_ map: Map) {
     self.init()
   }
   
   func mapping(map: Map) {
-    wifis    <- (map["result"], ListTransform<WifiInfo>())
+    wifis    <- (map["result"])
+    originalWifi <- map["result"]
   }
 }
 
-class WifiInfo: Object, Mappable {
+class WifiInfo: Mappable {
   dynamic var ssid: String = ""
   dynamic var bssid: String = ""
   dynamic var encryptionType: String = ""
@@ -32,9 +33,7 @@ class WifiInfo: Object, Mappable {
   func mapping(map: Map) {
     ssid                              <- map["ssid"]
     bssid                             <- map["bssid"]
-    encription                        <- map["encryption"]
     quality                           <- map["quality"]
-    encryptionType = encription.encripType
   }
   
   required convenience init?(_ map: Map) {

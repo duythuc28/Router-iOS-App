@@ -14,18 +14,20 @@ class CPXConfigureDetailViewController: UIViewController {
   @IBOutlet weak var mPasswordLabel: UILabel!
   @IBOutlet weak var configureButton: UIButton!
   
-  var wifiInformation: WifiInfo!
+  var wifiInformation: AnyObject!
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "Configure"
-    mPasswordLabel.text = "Enter \(wifiInformation.ssid) password"
+    if let ssid = wifiInformation["ssid"] as? String {
+      mPasswordLabel.text = "Enter \(ssid) password"
+    }
   }
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if segue.identifier == "showCPXConfiguring" {
-      let configuringVC = segue.destinationViewController as! CPXConfiguringViewController
-      configuringVC.wifiInfo = wifiInformation
-    }
+//    if segue.identifier == "showCPXConfiguring" {
+//      let configuringVC = segue.destinationViewController as! CPXConfiguringViewController
+//      configuringVC.wifiInfo = wifiInformation
+//    }
   }
   
   @IBAction func connectButtonClicked(sender: AnyObject) {
@@ -39,16 +41,19 @@ class CPXConfigureDetailViewController: UIViewController {
   }
   
   private func stopLoadingView() {
-    mPasswordLabel.text = "Enter \(wifiInformation.ssid) password"
+    if let ssid = wifiInformation["ssid"] as? String {
+      mPasswordLabel.text = "Enter \(ssid) password"
+    }
     configureButton.hidden = false
     mPasswordTextField.hidden = false
   }
   
   private func configureRouter() {
-    wifiInformation.password = mPasswordTextField.text!
+    view.endEditing(true)
+//    wifiInformation.password = mPasswordTextField.text!
     startAnimating()
     startLoadingView()
-    APIManager.configureCPX(wifiInfo: wifiInformation) { (result, error) in
+    APIManager.configureCPX(wifiInfo: wifiInformation, password: mPasswordTextField.text!) { (result, error) in
       self.stopAnimating()
       self.stopLoadingView()
       if result != nil {

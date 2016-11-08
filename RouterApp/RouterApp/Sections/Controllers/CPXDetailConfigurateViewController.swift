@@ -12,7 +12,7 @@ class CPXDetailConfigurateViewController: UIViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var mConfigureTableView: UITableView!
-  var wifiList:[WifiInfo]? {
+  var wifiList:[AnyObject]? {
     didSet {
       if wifiList!.count > 0 {
         mConfigureTableView.hidden = false
@@ -34,6 +34,12 @@ class CPXDetailConfigurateViewController: UIViewController {
     super.viewDidLoad()
     title = "Configure"
     
+    scanWifiNetworks()
+    timmer.invalidate()
+    titleLabel.text = "Be patient. We are looking for your home router …"
+    self.timmer = NSTimer.scheduledTimerWithTimeInterval(45, target: self, selector: #selector(CPXDetailConfigurateViewController.getWifiList), userInfo: nil, repeats: false)
+//    getWifiList()
+    
 //    self.navigationItem.hidesBackButton = true
 //    let backTitle = device.location.length > 12 ? "Back" : device.location
 //    let newBackButton = UIBarButtonItem(title: backTitle, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CPXDetailConfigurateViewController.backView(_:)))
@@ -47,17 +53,12 @@ class CPXDetailConfigurateViewController: UIViewController {
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-    scanWifiNetworks()
-    timmer.invalidate()
-    titleLabel.text = "Be patient. We are looking for your home router…"
-    self.timmer = NSTimer.scheduledTimerWithTimeInterval(45, target: self, selector: #selector(CPXDetailConfigurateViewController.getWifiList), userInfo: nil, repeats: false)
   }
   
   private func scanWifiNetworks() {
 //    startAnimating()    
     UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     APIManager.scanWifiNetworks { (result, error) in
-      UIApplication.sharedApplication().networkActivityIndicatorVisible = false
 //      self.stopAnimating()
 //      if result != nil {
 //        // DO nothing for success
@@ -76,7 +77,7 @@ class CPXDetailConfigurateViewController: UIViewController {
 //      self.stopAnimating()
       self.titleLabel.text = "No wifi nearby"
       if result != nil {
-        self.wifiList = Array(result!)
+        self.wifiList = result
       }
       else {
         self.showAlert(withMessage: "Have something wrong, please try again!")
@@ -89,7 +90,10 @@ class CPXDetailConfigurateViewController: UIViewController {
     if segue.identifier == "showConfigureDetailSegueIndentifier" {
       let configureDetailViewController = segue.destinationViewController as! CPXConfigureDetailViewController
       let selectedIndexPath = mConfigureTableView.indexPathForSelectedRow!
-      configureDetailViewController.wifiInformation = wifiList![selectedIndexPath.row]
+      guard let listWifi = wifiList else {
+        return
+      }
+      configureDetailViewController.wifiInformation = listWifi[selectedIndexPath.row]
     }
   }
   
@@ -104,7 +108,14 @@ extension CPXDetailConfigurateViewController: UITableViewDelegate, UITableViewDa
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     //CPXConfigureCell
     let cell = tableView.dequeueReusableCellWithIdentifier(wifiCellIdentifier)
-    cell?.textLabel?.text = wifiList![indexPath.row].ssid
+    guard let listWifi = wifiList else {
+      return UITableViewCell()
+    }
+    let wifiInfo = listWifi[indexPath.row]
+    guard let ssid = wifiInfo["ssid"] as? String else {
+      return UITableViewCell()
+    }
+    cell?.textLabel?.text = ssid
     return cell!
   }
   

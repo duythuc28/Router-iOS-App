@@ -9,22 +9,22 @@
 import UIKit
 
 class CPXConfiguringViewController: UIViewController {
-  var wifiInfo: WifiInfo!
+  var wifiInfo: AnyObject!
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    configureRouter()
+//    configureRouter()
   }
   
-  private func configureRouter() {
-    APIManager.configureCPX(wifiInfo: wifiInfo) { (result, error) in
-      if result != nil {
-        self.performSegueWithIdentifier("showConfigureSuccess", sender: nil)
-      }
-      else {
-        self.showAlert(withMessage: "Have something wrong, please try again!")
-      }
-    }
-  }
+//  private func configureRouter() {
+//    APIManager.configureCPX(wifiInfo: AnyObject) { (result, error) in
+//      if result != nil {
+//        self.performSegueWithIdentifier("showConfigureSuccess", sender: nil)
+//      }
+//      else {
+//        self.showAlert(withMessage: "Have something wrong, please try again!")
+//      }
+//    }
+//  }
   
 }

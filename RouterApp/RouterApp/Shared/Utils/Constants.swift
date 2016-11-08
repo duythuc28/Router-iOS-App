@@ -36,6 +36,7 @@ class Constants: NSObject {
     static let showConfigureSegueIdentifier       = "showConfigureSegueIdentifier"
     static let showOptimizeSegueIdentifier        = "showOptimizeSegueIdentifier"
     static let showAddNewLocationSegueIdentifier  = "showAddNewLocationSegueIdentifier"
+    static let showJoinMeshSegueIdentifier = "showJoinMeshSegueIdentifier"
   }
 }
 

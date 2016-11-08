@@ -82,7 +82,7 @@ class APIManager: NSObject {
     }
   }
   
-  static func getWifiList(completion:(result: List<WifiInfo>?, error: RESTError?) -> Void) {
+  static func getWifiList(completion:(result: [AnyObject]?, error: RESTError?) -> Void) {
     let info = getAddressAndToken()
     let path = String(format: "http://%@%@%@", info.ip, RESTContants.kGetWifiNetworks, info.token)
     let request = RESTRequest(url: path, functionName: "", method: .POST, endcoding: .JSON)
@@ -91,7 +91,7 @@ class APIManager: NSObject {
     request.baseInvokerWithHeaderResponse { (result, error) in
       if result != nil {
         if let result = Mapper<ScanListResponse>().map(result) {
-            completion(result: result.wifis, error: nil)
+            completion(result: result.originalWifi, error: nil)
         }
       }
       else {
@@ -118,18 +118,18 @@ class APIManager: NSObject {
     }
   }
   
-  static func configureCPX(wifiInfo wifi: WifiInfo, completion:((result: AnyObject?, error: RESTError?) -> Void)) {
+  static func configureCPX(wifiInfo wifi: AnyObject, password: String, completion:((result: AnyObject?, error: RESTError?) -> Void)) {
     let info = getAddressAndToken()
     
     let path = String(format: "http://%@%@%@", info.ip, RESTContants.kSetCPXInfo, info.token)
     let request = RESTRequest(url: path, functionName: "", method: .POST, endcoding: .JSON)
-    var paramDict = [String: String]()
-    paramDict["home_ssid"] = wifi.ssid
-    paramDict["mesh_ssid"] = "Home_mesh"
-    paramDict["encryption"] = wifi.encryptionType
-    paramDict["password"] = wifi.password
-    
-    let params = APIParams(method: "config", params: [paramDict])
+    guard var passwordInfo = wifi as? [String: AnyObject] else {
+        return
+    }
+    if password.length > 0 { // in case config for the first cpx
+      passwordInfo["password"] = password
+    }
+    let params = APIParams(method: "config", params: [passwordInfo])
     request.setQueryParam(params)
     request.baseInvokerWithHeaderResponse { (result, error) in
       if result != nil {
