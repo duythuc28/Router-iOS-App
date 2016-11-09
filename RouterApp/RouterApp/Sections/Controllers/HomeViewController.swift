@@ -10,6 +10,9 @@ import UIKit
 
 class HomeViewController: UIViewController {
   
+  @IBOutlet weak var leftBarButton: UIBarButtonItem!
+  
+  @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
   @IBOutlet weak var notFoundLabel: UILabel!
   @IBOutlet weak var currentSSID: UILabel!
   @IBOutlet weak var tableView: UITableView!
@@ -75,14 +78,15 @@ class HomeViewController: UIViewController {
   }
   
   private func startScanning() {
+    leftBarButton.enabled = false
     tableView.hidden = true
     notFoundLabel.hidden = true
 //    startLoadingIndicator()
-    UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    loadingIndicator.startAnimating()
     if scanLAN == nil {
       scanLAN = ScanLAN.init(delegate: self)
-      connectedDevices.removeAll()
     }
+    connectedDevices.removeAll()
     scanLAN?.stopScan()
     scanLAN?.startScan()
   }
@@ -155,7 +159,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     else { // red or green status, show detail device
       // if the previous cpx have config info, just call api to join
       for (_, obj) in connectedDevices.enumerate() {
-        if let configInfo = obj.configInfo where obj.macAddress != device.macAddress && !device.status  {
+        if let configInfo = obj.configInfo where obj.macAddress != device.macAddress && obj.status  {
           self.performSegueWithIdentifier(Constants.SegueIdentifer.showJoinMeshSegueIdentifier, sender: configInfo)
           return
         }
@@ -171,6 +175,7 @@ extension HomeViewController: ScanLANDelegate {
     if macAddress != nil {
       if macAddress.containsString("04:F0") {
         let device = CPXDevice(name: hostName, ip: address, mac: macAddress)
+//        self.connectedDevices.append(device) 
         // Authenticate router
         APIManager.authenticateRouter(withIP: address, completion: { (token, error) in
           if token != nil {
@@ -180,7 +185,7 @@ extension HomeViewController: ScanLANDelegate {
             APIManager.getCPXDetail(withIP: address, token: token!, completion: { (result, error) in
               if result != nil {
                 device.updateInfo(result)
-//                device.status = false
+//                device.status = true
 //                self.tableView.reloadData()
               }
               else {
@@ -201,7 +206,9 @@ extension HomeViewController: ScanLANDelegate {
   
   func scanLANDidFinishScanning() {
 //    stopLoadingIndicator()
-    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    loadingIndicator.stopAnimating()
+    leftBarButton.enabled = true
+    
     if connectedDevices.count > 0 {
       tableView.hidden = false
       notFoundLabel.hidden = true

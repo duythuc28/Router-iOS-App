@@ -59,6 +59,10 @@ class CPXDetailViewController: UITableViewController {
         if let config = segue.destinationViewController as? CPXDetailConfigurateViewController {
           config.device = self.device
         }
+      case Constants.SegueIdentifer.showOptimizeSegueIdentifier:
+        if let optimize = segue.destinationViewController as? CPXDetailOptimizeViewController {
+          optimize.device = self.device
+        }
       default:
         break
       }

@@ -178,14 +178,20 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="sld-IY-65n">
+                                <rect key="frame" x="151" y="96" width="37" height="37"/>
+                                <color key="color" red="0.1588520236" green="0.61288366849999998" blue="0.89377088900000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="GyY-bR-zm2" firstAttribute="centerX" secondItem="DqC-tW-Nha" secondAttribute="centerX" id="0Mq-22-wKw"/>
                             <constraint firstAttribute="trailing" secondItem="ANr-Pe-yJ2" secondAttribute="trailing" constant="20" id="AXF-Cs-DZm"/>
                             <constraint firstItem="GyY-bR-zm2" firstAttribute="leading" secondItem="fES-NM-AAW" secondAttribute="trailing" constant="31" id="CHs-he-wuR"/>
+                            <constraint firstItem="sld-IY-65n" firstAttribute="centerY" secondItem="fES-NM-AAW" secondAttribute="centerY" id="CUz-xt-wRw"/>
                             <constraint firstItem="YmI-be-3wF" firstAttribute="centerY" secondItem="DqC-tW-Nha" secondAttribute="centerY" id="JAw-ug-TeD"/>
                             <constraint firstItem="lCb-q7-e3I" firstAttribute="top" secondItem="ANr-Pe-yJ2" secondAttribute="bottom" constant="20" id="LLR-1Y-nkP"/>
+                            <constraint firstItem="fES-NM-AAW" firstAttribute="leading" secondItem="sld-IY-65n" secondAttribute="trailing" constant="20" id="Ozu-89-22x"/>
                             <constraint firstItem="ANr-Pe-yJ2" firstAttribute="leading" secondItem="DqC-tW-Nha" secondAttribute="leading" constant="20" id="X42-gI-lpA"/>
                             <constraint firstItem="fES-NM-AAW" firstAttribute="centerY" secondItem="GyY-bR-zm2" secondAttribute="centerY" id="ZUS-w5-b2a"/>
                             <constraint firstItem="YmI-be-3wF" firstAttribute="centerX" secondItem="DqC-tW-Nha" secondAttribute="centerX" id="cZV-4x-ZCr"/>
@@ -209,6 +215,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="currentSSID" destination="GyY-bR-zm2" id="CQ0-Fd-D6l"/>
+                        <outlet property="leftBarButton" destination="DCR-4o-SRl" id="sPH-fX-gXh"/>
+                        <outlet property="loadingIndicator" destination="sld-IY-65n" id="b7W-C6-Jky"/>
                         <outlet property="notFoundLabel" destination="YmI-be-3wF" id="fTG-Bb-O2R"/>
                         <outlet property="tableView" destination="ANr-Pe-yJ2" id="CEU-sD-aYa"/>
                         <segue destination="DCh-cN-oKz" kind="show" identifier="showCPXDetailSegueIdentifier" id="kWK-VA-ofg"/>
@@ -953,8 +961,10 @@
                     </view>
                     <connections>
                         <outlet property="cpxInfoView" destination="ZYt-BJ-SRn" id="RpU-eR-X4r"/>
+                        <outlet property="numberClientLabel" destination="wWN-9J-Sgx" id="elu-9z-z79"/>
                         <outlet property="optimizeButton" destination="4Ed-Mp-Wzp" id="qIc-NG-2HK"/>
                         <outlet property="optimizingView" destination="vOm-Mb-CLt" id="zRL-9A-PoL"/>
+                        <outlet property="qualityLabel" destination="uBa-F0-h74" id="7Jt-fu-NEx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nyH-97-YtT" userLabel="First Responder" sceneMemberID="firstResponder"/>

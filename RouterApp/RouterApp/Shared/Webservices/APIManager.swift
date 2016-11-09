@@ -82,6 +82,22 @@ class APIManager: NSObject {
     }
   }
   
+  static func optimizeCPX(completion:((result: AnyObject?, error: RESTError?) -> Void)) {
+    let info = getAddressAndToken()
+    let path = String(format: "http://%@%@%@", info.ip, RESTContants.kRebootCPX, info.token)
+    let request = RESTRequest(url: path, functionName: "", method: .POST, endcoding: .JSON)
+    let params = APIParams(method: "optimize", params: [])
+    request.setQueryParam(params)
+    request.baseInvokerWithHeaderResponse { (result, error) in
+      if result != nil {
+        completion(result: result, error: nil)
+      }
+      else {
+        completion(result: nil, error: error)
+      }
+    }
+  }
+  
   static func getWifiList(completion:(result: [AnyObject]?, error: RESTError?) -> Void) {
     let info = getAddressAndToken()
     let path = String(format: "http://%@%@%@", info.ip, RESTContants.kGetWifiNetworks, info.token)

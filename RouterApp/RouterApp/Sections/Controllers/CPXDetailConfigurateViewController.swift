@@ -49,6 +49,7 @@ class CPXDetailConfigurateViewController: UIViewController {
   override func viewWillDisappear(animated: Bool) {
     super.viewWillDisappear(animated)
     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    timmer.invalidate()
   }
   
   override func viewWillAppear(animated: Bool) {
